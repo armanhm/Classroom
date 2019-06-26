@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_stream"
+        android:enabled="true"
+        android:title="Stream"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_classwork"
+        android:enabled="true"
+        android:title="Classwork"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_people"
+        android:enabled="true"
+        android:title="People"
+        app:showAsAction="ifRoom" />
+</menu>
