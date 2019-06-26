@@ -3,7 +3,7 @@ package com.example.testclassroom;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SingInActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

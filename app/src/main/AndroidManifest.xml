@@ -14,7 +14,7 @@
         <activity android:name=".ClassActivity"></activity>
         <activity android:name=".JoinClassActivity" />
         <activity android:name=".CreateClassActivity" />
-        <activity android:name=".SingInActivity" />
+        <activity android:name=".SignInActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".MainActivity">
