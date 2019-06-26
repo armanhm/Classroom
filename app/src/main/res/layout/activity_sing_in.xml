@@ -8,7 +8,7 @@
     tools:context=".SignInActivity">
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/editTextUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -18,7 +18,7 @@
         android:hint="Username" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/editTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
@@ -33,5 +33,5 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="165dp"
-        android:text="Sing in" />
+        android:text="Sign in" />
 </android.support.v7.widget.LinearLayoutCompat>

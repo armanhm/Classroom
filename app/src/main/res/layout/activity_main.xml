@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="280dp"
         android:layout_marginLeft="190dp"
-        android:text="Sing in" />
+        android:text="Sign in" />
 
     <Button
         android:id="@+id/buttonRegister"

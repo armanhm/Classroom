@@ -17,7 +17,7 @@
         />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editTextUsername2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -28,7 +28,7 @@
          />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editTextPassword2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -38,7 +38,7 @@
          />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="150dp"

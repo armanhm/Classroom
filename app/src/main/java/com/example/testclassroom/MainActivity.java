@@ -18,11 +18,11 @@ public class MainActivity extends AppCompatActivity {
         buttonSignIn = findViewById(R.id.buttonSignIn);
         buttonRegister = findViewById(R.id.buttonRegister);
         buttonSignIn.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,RegisterActivity.class);
+            Intent intent = new Intent(MainActivity.this,SignInActivity.class);
             startActivity(intent);
         });
         buttonRegister.setOnClickListener(v ->{
-            Intent intent = new Intent(MainActivity.this, SignInActivity.class);
+            Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
             startActivity(intent);
         });
 
