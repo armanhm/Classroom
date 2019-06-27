@@ -25,7 +25,9 @@ public class SignInActivity extends AppCompatActivity {
             SendMessage sendMessage = new SendMessage();
             sendMessage.execute(s);
             //receive
+            WelcomeActivity.username = username.getText().toString();
         });
+
 
 //        username.setOnFocusChangeListener((v, hasFocus) -> {
 //            String check = "userChecker:" + username.getText().toString();
