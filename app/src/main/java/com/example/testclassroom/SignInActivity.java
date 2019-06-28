@@ -2,10 +2,6 @@ package com.example.testclassroom;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,8 +23,8 @@ public class SignInActivity extends AppCompatActivity {
         buttonSignIn.setOnClickListener(v ->{
             String s = "signIn:" + username.getText().toString()
                     + ":" + password.getText().toString();
-            SendMessage sendMessage = new SendMessage();
-            sendMessage.execute(s);
+            TransferMessage transferMessage = new TransferMessage();
+            transferMessage.execute(s);
             WelcomeActivity.username = username.getText().toString();
             textView.setText(msg);
         });
@@ -36,7 +32,7 @@ public class SignInActivity extends AppCompatActivity {
 
 //        username.setOnFocusChangeListener((v, hasFocus) -> {
 //            String check = "userChecker:" + username.getText().toString();
-//            SendMessage sendMessage = new SendMessage();
+//            TransferMessage sendMessage = new TransferMessage();
 //            sendMessage.execute(check);
 //        });
     }

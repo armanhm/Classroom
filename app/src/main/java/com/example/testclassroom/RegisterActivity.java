@@ -5,15 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.concurrent.ExecutionException;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -43,9 +37,9 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String check = "userChecker:" + username.getText().toString();
-                SendMessage sendMessage = new SendMessage();
-                sendMessage.execute(check);
-                Toast.makeText(RegisterActivity.this,sendMessage.message,Toast.LENGTH_SHORT).show();
+                TransferMessage transferMessage = new TransferMessage();
+                transferMessage.execute(check);
+                Toast.makeText(RegisterActivity.this, transferMessage.message,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -58,9 +52,9 @@ public class RegisterActivity extends AppCompatActivity {
             p = new Person();
             p.setUsername(username.getText().toString());
             p.setPassword(password.getText().toString());
-          SendMessage sendMessage = new SendMessage();
-          sendMessage.execute(s);
-            Intent intent = new Intent(RegisterActivity.this,NotificationActivity.class);
+          TransferMessage transferMessage = new TransferMessage();
+          transferMessage.execute(s);
+            Intent intent = new Intent(RegisterActivity.this,ListOfClassActivity.class);
             startActivity(intent);
         });
     }

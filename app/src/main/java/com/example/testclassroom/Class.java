@@ -1,40 +1,42 @@
 package com.example.testclassroom;
 
-public class Class {
-    private String name ;
-    private String code ;
-    private String studentNumbers ;
-    private String description ;
 
-    public void setName(String name) {
+import java.io.Serializable;
+import java.util.*;
+
+class Class implements Serializable {
+    private String name;
+    private String description;
+    private String number;
+    private String code;
+    private Person teacher;
+    private ArrayList<Person> TAs = new ArrayList<>();
+    private ArrayList<Person> students = new ArrayList<>();
+
+    public Class(Person p,String name, String description, String number) {
+        teacher = p ;
         this.name = name;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public void setStudentNumbers(String studentNumbers) {
-        this.studentNumbers = studentNumbers;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getName() {
-        return name;
+        this.number = number;
     }
 
     public String getCode() {
         return code;
     }
 
-    public String getStudentNumbers() {
-        return studentNumbers;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getDescription() {
-        return description;
+    public ArrayList<Person> getStudents() {
+        return students;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getNumber() {
+        return number;
     }
 }
