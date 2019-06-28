@@ -60,7 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
             p.setPassword(password.getText().toString());
           SendMessage sendMessage = new SendMessage();
           sendMessage.execute(s);
-            Intent intent = new Intent(RegisterActivity.this,ClassActivity.class);
+            Intent intent = new Intent(RegisterActivity.this,NotificationActivity.class);
             startActivity(intent);
         });
     }

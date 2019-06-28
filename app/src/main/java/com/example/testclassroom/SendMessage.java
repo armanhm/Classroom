@@ -17,7 +17,7 @@ public class SendMessage extends AsyncTask<String, Void, Void> {
     protected Void doInBackground(String... voids) {
         String s = voids[0];
         try {
-            socket = new Socket("172.20.120.40", 8867);
+            socket = new Socket("192.168.56.1", 8867);
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -28,7 +28,6 @@ public class SendMessage extends AsyncTask<String, Void, Void> {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                 }
             }).start();
             new Thread(new Runnable() {
@@ -50,8 +49,20 @@ public class SendMessage extends AsyncTask<String, Void, Void> {
                                 RegisterActivity.p.getClasses().add(c);
                                 RegisterActivity.p.getItemClasses().add(itemClass);
                             }
-
                         }
+                        else if (params[0].equals("test")){
+                            SignInActivity.msg = params[1];
+                        }
+                        else if(params[0].equals("testList")){
+                            Log.e("taga",message);
+                            for (int i = 1; i < params.length-1; i++) {
+                                ClassActivity.arrayList.add(params[i]);
+                            }
+                        }
+                        else {
+                            Log.e("taga",params[0]);
+                        }
+//                        Log.e("taga",ClassActivity.arrayList.get(1));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

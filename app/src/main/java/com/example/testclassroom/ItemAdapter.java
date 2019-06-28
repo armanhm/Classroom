@@ -52,7 +52,7 @@ class ItemArrayAdapter extends RecyclerView.Adapter<ItemArrayAdapter.ViewHolder>
             itemView.setOnClickListener(this);
           className = itemView.findViewById(R.id.textViewClassName);
           numberOfStudent = itemView.findViewById(R.id.textViewStudentNumbers);
-        }
+    }
         @Override
         public void onClick(View view) {
             //Log.d("onclick", "onClick " + getLayoutPosition() + " " + item.getText());
