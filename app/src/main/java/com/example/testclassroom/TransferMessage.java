@@ -17,6 +17,7 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
     String message;
     Object object;
     static ArrayList<Class> classes;
+    static ArrayList<String> classList = new ArrayList<>();
 
     @Override
     protected Void doInBackground(String... voids) {
@@ -35,50 +36,36 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                     }
                 }
             }).start();
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        dataInputStream = new DataInputStream(socket.getInputStream());
-                        //objectInputStream = new ObjectInputStream(socket.getInputStream());
+            new Thread(() -> {
+                try {
+                    dataInputStream = new DataInputStream(socket.getInputStream());
+                    //objectInputStream = new ObjectInputStream(socket.getInputStream());
 
-                        Log.e("taga","before reading");
-                        message = dataInputStream.readUTF();
-                        //object = objectInputStream.readObject();
-                        Log.e("taga","after object");
-                        //classes = (ArrayList<Class>) object;
+                    message = dataInputStream.readUTF();
+                    //object = objectInputStream.readObject();
+                    //classes = (ArrayList<Class>) object;
 
-                        String [] params = message.split(":");
-                        Log.e("tagb",params[0]);
-                        switch (params[0]) {
-                            case "listOfClasses":
-                                break;
-                            case "test":
-                                SignInActivity.msg = params[1];
-                                break;
-                            case "salam":
-                                Log.e("tagb",message);
-                                break;
-                            case "testList":
-                                //Log.e("taga", message);
-                                for (int i = 1; i < params.length - 1; i++) {
-                                    ListOfClassActivity.arrayList.add(params[i]);
-                                }
-                                break;
-                            default:
-                               // Log.e("taga", params[0]);
-                                break;
-                        }
-
-
-//                        Log.e("taga",ListOfClassActivity.arrayList.get(1));
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    String [] params = message.split(":");
+                    switch (params[0]) {
+                        case "listOfClasses":
+                            for (int i = 1; i < params.length; i++) {
+                                classList.add(params[i]);
+                            }
+                            break;
+                        case "test":
+                            SignInActivity.msg = params[1];
+                            break;
+                        default:
+                            break;
                     }
+
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 //                    catch (ClassNotFoundException e) {
 //                        e.printStackTrace();
 //                    }
-                }
             }).start();
 
         } catch (IOException e) {

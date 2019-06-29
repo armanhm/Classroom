@@ -20,12 +20,10 @@ public class ListOfClassActivity extends AppCompatActivity {
         Log.e("User", WelcomeActivity.username);
         recyclerView = findViewById(R.id.recyclerViewClassNames);
         ArrayList<ItemClass> classList = RegisterActivity.p.getItemClasses();
-        for (int i = 0; i < arrayList.size(); i++) {
-            Class c = TransferMessage.classes.get(i);
-            ItemClass itemClass = new ItemClass(c.getName(),c.getNumber());
+        for (int i = 0; i < arrayList.size() - 1 ; i++) {
+            ItemClass itemClass = new ItemClass(TransferMessage.classList.get(i),TransferMessage.classList.get(i+1));
             classList.add(itemClass);
         }
-        //Log.e("TAGA",TransferMessage.classes.get(0).getName());
         TransferMessage transferMessage = new TransferMessage();
         transferMessage.execute("classList:" + WelcomeActivity.username);
         ItemArrayAdapter itemArrayAdapter = new ItemArrayAdapter(R.layout.item,classList);
