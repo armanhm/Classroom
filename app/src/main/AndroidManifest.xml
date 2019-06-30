@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ClassActivity"></activity>
+        <activity android:name=".CreateHomeworkActivity"></activity>
+        <activity android:name=".ClassActivity" />
         <activity android:name=".NotificationActivity" />
         <activity android:name=".ListOfClassActivity" />
         <activity android:name=".JoinClassActivity" />

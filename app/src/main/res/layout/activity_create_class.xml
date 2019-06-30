@@ -9,7 +9,7 @@
     tools:context=".CreateClassActivity">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editTextClassName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -17,7 +17,7 @@
         android:layout_margin="15dp"
         android:hint="Class Name(required)" />
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/editTextDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -26,7 +26,7 @@
         android:hint="Description" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/editTextNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -40,17 +40,17 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonCreateClass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100dp"
-            android:text="Cancel" />
+            android:text="Create" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/buttonCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="Create" />
+            android:text="Cancel" />
     </android.support.v7.widget.LinearLayoutCompat>
 </android.support.v7.widget.LinearLayoutCompat>

@@ -18,13 +18,17 @@
                 android:id="@+id/textViewClassName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="test" />
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:text="LeoMessi" />
 
             <TextView
                 android:id="@+id/textViewStudentNumbers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="test2" />
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:text="CR7" />
 
         </android.support.v7.widget.LinearLayoutCompat>
 
@@ -32,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="200dp"
-            android:text="test3"/>
+            android:text="Neymar"/>
 
 
     </android.support.v7.widget.LinearLayoutCompat>

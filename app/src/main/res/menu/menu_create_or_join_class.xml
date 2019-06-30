@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ListOfClassActivity">
+
+
+    <item
+        app:showAsAction="always"
+        android:title="+"
+        android:id="@+id/action_plus"
+        android:icon="@drawable/plus_icon">
+        <menu>
+            <item android:title="Create Class"
+                android:id="@+id/action_create"/>
+            <item android:title="Join Class"
+                android:id="@+id/action_join"/>
+        </menu>
+    </item>
+    <item android:title="Item" />
+    <item android:title="Item" />
+
+</menu>

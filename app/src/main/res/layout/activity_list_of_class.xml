@@ -9,9 +9,17 @@
     android:layout_height="match_parent"
     tools:context=".ListOfClassActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp"
+        />
+
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/recyclerViewClassNames"
         android:scrollbars="vertical">
     </android.support.v7.widget.RecyclerView>

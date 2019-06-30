@@ -36,10 +36,10 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                String check = "userChecker:" + username.getText().toString();
-                TransferMessage transferMessage = new TransferMessage();
-                transferMessage.execute(check);
-                Toast.makeText(RegisterActivity.this, transferMessage.message,Toast.LENGTH_SHORT).show();
+//                String check = "userChecker:" + username.getText().toString();
+//                TransferMessage transferMessage = new TransferMessage();
+//                transferMessage.execute(check);
+//                Toast.makeText(RegisterActivity.this, transferMessage.message,Toast.LENGTH_SHORT).show();
             }
         });
 
