@@ -19,6 +19,14 @@ class ItemArrayAdapter extends RecyclerView.Adapter<ItemArrayAdapter.ViewHolder>
         this.itemList = itemList;
     }
 
+    public void updateList (ArrayList<ItemClass> items) {
+        if (items != null && items.size() > 0) {
+            itemList.clear();
+            itemList.addAll(items);
+            notifyDataSetChanged();
+        }
+    }
+
     // get the size of the list
     @Override
     public int getItemCount() {

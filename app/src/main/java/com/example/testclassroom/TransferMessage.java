@@ -42,20 +42,19 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                     switch (params[0]) {
                         case "classList": {
                             MainActivity.classList.clear();
-//                            for (int i = 1; i < params.length; i++) {
-//                                MainActivity.classList.add(params[i]);
-//                            }
                             ListOfClassActivity.listString = message;
-                            Log.e("message >>>>" ,message) ;
+                            Log.e("classList@@@" , message);
                         }
                             break;
                         case "test": {
                             SignInActivity.msg = params[1];
                             break;
                         }
-                        case "makeClass":
+                        case "createClass":
                         {
+                            Log.e("createClass",message);
                             if (params[1].equals("success")){
+                                ListOfClassActivity.classCode = params[2];
                             }
                             break;
                         }

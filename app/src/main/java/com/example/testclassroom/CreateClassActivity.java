@@ -36,7 +36,7 @@ public class CreateClassActivity extends AppCompatActivity {
 
             TransferMessage transferMessage = new TransferMessage();
             transferMessage.execute(result);
-            Log.e("sendCreate",result);
+            //Log.e("sendCreate",result);
             refreshList();
 
             Intent intent = new Intent(CreateClassActivity.this,ListOfClassActivity.class) ;

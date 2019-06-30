@@ -19,14 +19,21 @@ public class ListOfClassActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     static ArrayList<String> arrayList;
     static String listString = "";
+    static String classCode = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         arrayList = new ArrayList<>();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_class);
-
         CreateClassActivity.refreshList();
+
+
+        if (!classCode.equals("")){
+            Toast.makeText(ListOfClassActivity.this,"Class Code : "+classCode,Toast.LENGTH_LONG).show();
+            classCode = "";
+        }
+
 //        TransferMessage transferMessage = new TransferMessage();
 //        transferMessage.execute("classList:" + WelcomeActivity.username) ;
 
@@ -84,6 +91,10 @@ public class ListOfClassActivity extends AppCompatActivity {
         }
         else if(id == R.id.action_create){
             Intent intent = new Intent(ListOfClassActivity.this,CreateClassActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.action_refresh_list){
+            Intent intent = new Intent(ListOfClassActivity.this,ListOfClassActivity.class);
             startActivity(intent);
         }
 
