@@ -43,7 +43,6 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                         case "classList": {
                             MainActivity.classList.clear();
                             ListOfClassActivity.listString = message;
-                            Log.e("classList@@@" , message);
                         }
                             break;
                         case "test": {
@@ -52,7 +51,6 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                         }
                         case "createClass":
                         {
-                            Log.e("createClass",message);
                             if (params[1].equals("success")){
                                 ListOfClassActivity.classCode = params[2];
                             }
@@ -61,9 +59,11 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                         case "joinClass" :{
                             if (params[1].equals("success")){
                                 JoinClassActivity.result = "success";
+                                JoinClassActivity.className = params[2];
+                                Log.e("joined",message) ;
                             }
                             else if (params[1].equals("error")){
-                                JoinClassActivity.editTextCode.setError("Wrong class code");
+                                JoinClassActivity.result = "error";
                             }
                             break;
                         }

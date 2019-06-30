@@ -1,25 +1,28 @@
 package com.example.testclassroom;
+
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 
 
 class ItemArrayAdapter extends RecyclerView.Adapter<ItemArrayAdapter.ViewHolder> {
 
-    //All methods in this adapter are required for a bare minimum recyclerview adapter
     private int listItemLayout;
     private ArrayList<ItemClass> itemList;
+    private OnNoteListener onNoteListener;
+
     // Constructor of the class
-    public ItemArrayAdapter(int layoutId, ArrayList<ItemClass> itemList) {
+    public ItemArrayAdapter(int layoutId, ArrayList<ItemClass> itemList, OnNoteListener onNoteListener) {
         listItemLayout = layoutId;
         this.itemList = itemList;
+        this.onNoteListener = onNoteListener;
     }
 
-    public void updateList (ArrayList<ItemClass> items) {
+    public void updateList(ArrayList<ItemClass> items) {
         if (items != null && items.size() > 0) {
             itemList.clear();
             itemList.addAll(items);
@@ -27,7 +30,6 @@ class ItemArrayAdapter extends RecyclerView.Adapter<ItemArrayAdapter.ViewHolder>
         }
     }
 
-    // get the size of the list
     @Override
     public int getItemCount() {
         return itemList == null ? 0 : itemList.size();
@@ -38,7 +40,7 @@ class ItemArrayAdapter extends RecyclerView.Adapter<ItemArrayAdapter.ViewHolder>
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(listItemLayout, parent, false);
-        ViewHolder myViewHolder = new ViewHolder(view);
+        ViewHolder myViewHolder = new ViewHolder(view,onNoteListener);
         return myViewHolder;
     }
 
@@ -51,19 +53,27 @@ class ItemArrayAdapter extends RecyclerView.Adapter<ItemArrayAdapter.ViewHolder>
         numberOfStudents.setText(itemList.get(listPosition).getNumberOfStudent());
     }
 
+    public interface OnNoteListener {
+        void onNoteClick(int position);
+    }
+
     // Static inner class to initialize the views of rows
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView className;
         public TextView numberOfStudent;
-        public ViewHolder(View itemView) {
+        OnNoteListener onNoteListener;
+
+        public ViewHolder(View itemView, OnNoteListener onNoteListener) {
             super(itemView);
             itemView.setOnClickListener(this);
-          className = itemView.findViewById(R.id.textViewClassName);
-          numberOfStudent = itemView.findViewById(R.id.textViewStudentNumbers);
-    }
+            className = itemView.findViewById(R.id.textViewClassName);
+            numberOfStudent = itemView.findViewById(R.id.textViewStudentNumbers);
+            this.onNoteListener = onNoteListener;
+        }
+
         @Override
         public void onClick(View view) {
-            //Log.d("onclick", "onClick " + getLayoutPosition() + " " + item.getText());
+            onNoteListener.onNoteClick(getAdapterPosition());
         }
     }
 }

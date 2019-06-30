@@ -6,26 +6,29 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.transition.TransitionSet;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class ListOfClassActivity extends AppCompatActivity {
+public class ListOfClassActivity extends AppCompatActivity implements ItemArrayAdapter.OnNoteListener {
     RecyclerView recyclerView;
     static ArrayList<String> arrayList;
     static String listString = "";
     static String classCode = "";
+    ArrayList<ItemClass> classList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         arrayList = new ArrayList<>();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_class);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         CreateClassActivity.refreshList();
 
 
@@ -44,31 +47,16 @@ public class ListOfClassActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerViewClassNames);
 
-        ArrayList<ItemClass> classList = new ArrayList<>();
+        classList = new ArrayList<>();
         for (int i = 0; i < arrayList.size()-1; i += 2) {
             ItemClass itemClass = new ItemClass(arrayList.get(i) , arrayList.get(i+1));
             classList.add(itemClass);
         }
         RegisterActivity.p.setItemClasses(classList);
-        ItemArrayAdapter itemArrayAdapter = new ItemArrayAdapter(R.layout.item,RegisterActivity.p.getItemClasses());
+        ItemArrayAdapter itemArrayAdapter = new ItemArrayAdapter(R.layout.item,RegisterActivity.p.getItemClasses(),this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(itemArrayAdapter);
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        TransferMessage transferMessage = new TransferMessage();
-        transferMessage.execute("classList:" + WelcomeActivity.username);
-        if (arrayList.size() != 0) {
-        }
-
     }
 
     @Override
@@ -99,5 +87,16 @@ public class ListOfClassActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onNoteClick(int position) {
+        ItemClass itemClass = classList.get(position);
+        Intent intent = new Intent(ListOfClassActivity.this,ClassActivity.class);
+        intent.putExtra("className",itemClass.getName());
+        intent.putExtra("classNumber",itemClass.getNumberOfStudent());
+        Toast.makeText(ListOfClassActivity.this,"class name: " + itemClass.getName(),Toast.LENGTH_LONG).show();
+        startActivity(intent);
+
     }
 }

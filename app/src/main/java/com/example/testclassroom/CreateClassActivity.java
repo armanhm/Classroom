@@ -26,6 +26,7 @@ public class CreateClassActivity extends AppCompatActivity {
         editTextNumber = findViewById(R.id.editTextNumber);
         createClassButton = findViewById(R.id.buttonCreateClass);
         cancelButton = findViewById(R.id.buttonCancel);
+
         createClassButton.setOnClickListener(v -> {
             name = editTextName.getText().toString();
             description = editTextDescription.getText().toString();
@@ -33,15 +34,17 @@ public class CreateClassActivity extends AppCompatActivity {
             result = result.concat(WelcomeActivity.username + ":");
             result = result.concat(name + ":" + description + ":") ;
             result = result.concat(number) ;
-
             TransferMessage transferMessage = new TransferMessage();
             transferMessage.execute(result);
             //Log.e("sendCreate",result);
-            refreshList();
+            //refreshList();
 
             Intent intent = new Intent(CreateClassActivity.this,ListOfClassActivity.class) ;
             startActivity(intent);
+
+            refreshList();
         });
+
         cancelButton.setOnClickListener(v -> {
            TransferMessage transferMessage = new TransferMessage();
             transferMessage.execute("error");
