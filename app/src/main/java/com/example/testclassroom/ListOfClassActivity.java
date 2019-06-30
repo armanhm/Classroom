@@ -18,29 +18,51 @@ import java.util.ArrayList;
 public class ListOfClassActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     static ArrayList<String> arrayList;
+    static String listString = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        arrayList = new ArrayList<>();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_class);
-        TransferMessage transferMessage = new TransferMessage();
-        transferMessage.execute("classList:" + WelcomeActivity.username);
-        if (WelcomeActivity.classList.size() != 0) {
-            Log.e("Transfer", WelcomeActivity.classList.get(0));
+
+        CreateClassActivity.refreshList();
+//        TransferMessage transferMessage = new TransferMessage();
+//        transferMessage.execute("classList:" + WelcomeActivity.username) ;
+
+        String[] s = listString.split(":");
+        for (int i = 1; i < s.length; i++) {
+            arrayList.add(s[i]);
         }
+
         recyclerView = findViewById(R.id.recyclerViewClassNames);
-        ArrayList<ItemClass> classList = RegisterActivity.p.getItemClasses();
-        for (int i = 0; i < WelcomeActivity.classList.size()-1; i++) {
-            ItemClass itemClass = new ItemClass(WelcomeActivity.classList.get(i) , WelcomeActivity.classList.get(i+1));
+
+        ArrayList<ItemClass> classList = new ArrayList<>();
+        for (int i = 0; i < arrayList.size()-1; i += 2) {
+            ItemClass itemClass = new ItemClass(arrayList.get(i) , arrayList.get(i+1));
             classList.add(itemClass);
         }
-        ItemArrayAdapter itemArrayAdapter = new ItemArrayAdapter(R.layout.item,classList);
+        RegisterActivity.p.setItemClasses(classList);
+        ItemArrayAdapter itemArrayAdapter = new ItemArrayAdapter(R.layout.item,RegisterActivity.p.getItemClasses());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(itemArrayAdapter);
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        TransferMessage transferMessage = new TransferMessage();
+        transferMessage.execute("classList:" + WelcomeActivity.username);
+        if (arrayList.size() != 0) {
+        }
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -30,17 +30,17 @@ public class CreateClassActivity extends AppCompatActivity {
             name = editTextName.getText().toString();
             description = editTextDescription.getText().toString();
             number = editTextNumber.getText().toString();
-            //Log.e("TAGA",description);
             result = result.concat(WelcomeActivity.username + ":");
             result = result.concat(name + ":" + description + ":") ;
             result = result.concat(number) ;
 
             TransferMessage transferMessage = new TransferMessage();
             transferMessage.execute(result);
+            Log.e("sendCreate",result);
+            refreshList();
 
             Intent intent = new Intent(CreateClassActivity.this,ListOfClassActivity.class) ;
             startActivity(intent);
-            Log.e("size",WelcomeActivity.classList.size()+"");
         });
         cancelButton.setOnClickListener(v -> {
            TransferMessage transferMessage = new TransferMessage();
@@ -48,5 +48,9 @@ public class CreateClassActivity extends AppCompatActivity {
             Intent intent = new Intent(CreateClassActivity.this,ListOfClassActivity.class);
             startActivity(intent);
         });
+    }
+    public static void refreshList(){
+        TransferMessage transferMessage = new TransferMessage();
+        transferMessage.execute("classList:" + WelcomeActivity.username);
     }
 }

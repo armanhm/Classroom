@@ -8,6 +8,9 @@ public class Person {
     private ArrayList <Class> classes = new ArrayList<>();
     private ArrayList <ItemClass> itemClasses = new ArrayList<>();
 
+    public void setItemClasses(ArrayList<ItemClass> itemClasses) {
+        this.itemClasses = itemClasses;
+    }
 
     public ArrayList<ItemClass> getItemClasses() {
         return itemClasses;

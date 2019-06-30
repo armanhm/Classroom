@@ -2,6 +2,8 @@ package com.example.testclassroom;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -26,7 +28,6 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                 try {
                     dataOutputStream = new DataOutputStream(socket.getOutputStream());
                     dataOutputStream.writeUTF(s);
-                    Log.e("finalTag",s) ;
                     dataOutputStream.flush();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -38,22 +39,32 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                     message = dataInputStream.readUTF();
 
                     String [] params = message.split(":");
-                    Log.e("TagB",message);
                     switch (params[0]) {
                         case "classList": {
-                            for (int i = 1; i < params.length; i++) {
-                                WelcomeActivity.classList.add(params[i]);
-                            }
-                            Log.e("TagA", message);
+                            MainActivity.classList.clear();
+//                            for (int i = 1; i < params.length; i++) {
+//                                MainActivity.classList.add(params[i]);
+//                            }
+                            ListOfClassActivity.listString = message;
+                            Log.e("message >>>>" ,message) ;
                         }
                             break;
-                        case "test":
+                        case "test": {
                             SignInActivity.msg = params[1];
                             break;
+                        }
                         case "makeClass":
                         {
                             if (params[1].equals("success")){
-                                Log.e("TagC",params[2]);
+                            }
+                            break;
+                        }
+                        case "joinClass" :{
+                            if (params[1].equals("success")){
+                                JoinClassActivity.result = "success";
+                            }
+                            else if (params[1].equals("error")){
+                                JoinClassActivity.editTextCode.setError("Wrong class code");
                             }
                             break;
                         }
