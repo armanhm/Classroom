@@ -3,13 +3,11 @@ package com.example.testclassroom;
 public class ItemHomework {
     private String name;
     private String date;
-    private String time;
     private String numberOfComments = "0";
 
-    public ItemHomework(String name, String date, String time, String numberOfComments) {
+    public ItemHomework(String name, String date,String numberOfComments) {
         this.name = name;
         this.date = date;
-        this.time = time;
         this.numberOfComments = numberOfComments;
     }
 
@@ -27,14 +25,6 @@ public class ItemHomework {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 
     public String getNumberOfComments() {

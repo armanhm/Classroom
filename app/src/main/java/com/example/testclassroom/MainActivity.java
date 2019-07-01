@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle t;
     private NavigationView nv;
     static ArrayList<String> classList = new ArrayList<>();
+    static ArrayList<String> homeworkList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ListOfClassActivity.arrayList = new ArrayList<>();

@@ -67,6 +67,12 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                             }
                             break;
                         }
+                        case "homeworkList" :{
+                            MainActivity.homeworkList.clear();
+                            //ListOfHomeworkActivity.arrayListHomework.clear();
+                            ListOfHomeworkActivity.listOfHomework = message ;
+                            Log.e("homeworkList",ListOfHomeworkActivity.listOfHomework);
+                        }
                         default:
                             break;
                     }

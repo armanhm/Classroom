@@ -11,12 +11,14 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ListOfClassActivity extends AppCompatActivity implements ItemArrayAdapter.OnNoteListener {
     RecyclerView recyclerView;
     static ArrayList<String> arrayList;
     static String listString = "";
     static String classCode = "";
+    static Class c;
     ArrayList<ItemClass> classList;
 
     @Override
@@ -41,9 +43,7 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
 //        transferMessage.execute("classList:" + WelcomeActivity.username) ;
 
         String[] s = listString.split(":");
-        for (int i = 1; i < s.length; i++) {
-            arrayList.add(s[i]);
-        }
+        arrayList.addAll(Arrays.asList(s).subList(1, s.length));
 
         recyclerView = findViewById(R.id.recyclerViewClassNames);
 
@@ -92,9 +92,14 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
     @Override
     public void onNoteClick(int position) {
         ItemClass itemClass = classList.get(position);
-        Intent intent = new Intent(ListOfClassActivity.this,ClassActivity.class);
+        Intent intent = new Intent(ListOfClassActivity.this,ListOfHomeworkActivity.class);
+
+        TransferMessage transferMessage = new TransferMessage();
+        transferMessage.execute("homeworkList:" + itemClass.getName());
+
         intent.putExtra("className",itemClass.getName());
         intent.putExtra("classNumber",itemClass.getNumberOfStudent());
+        c = new Class(RegisterActivity.p,itemClass.getName(),"description",itemClass.getNumberOfStudent());
         Toast.makeText(ListOfClassActivity.this,"class name: " + itemClass.getName(),Toast.LENGTH_LONG).show();
         startActivity(intent);
 

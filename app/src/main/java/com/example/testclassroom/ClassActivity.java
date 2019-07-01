@@ -42,7 +42,7 @@ public class ClassActivity extends AppCompatActivity {
 
         homeworkList = new ArrayList<>();
         for (int i = 0; i < arrayList.size()-1; i += 2) {
-            ItemHomework itemHomework = new ItemHomework(arrayList.get(i) , arrayList.get(i+1), arrayList.get(i+2) , arrayList.get(i+3));
+            ItemHomework itemHomework = new ItemHomework(arrayList.get(i) , arrayList.get(i+1), arrayList.get(i+2));
             homeworkList.add(itemHomework);
         }
         //ItemArrayAdapter itemArrayAdapter = new ItemArrayAdapter(R.layout.item,RegisterActivity.p.getItemClasses(),this);
