@@ -95,7 +95,7 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
         Intent intent = new Intent(ListOfClassActivity.this,ListOfHomeworkActivity.class);
 
         TransferMessage transferMessage = new TransferMessage();
-        transferMessage.execute("homeworkList:" + itemClass.getName());
+        transferMessage.execute("homeworkList:" + itemClass.getName() + ":" + WelcomeActivity.username);
 
         intent.putExtra("className",itemClass.getName());
         intent.putExtra("classNumber",itemClass.getNumberOfStudent());

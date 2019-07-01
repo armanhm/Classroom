@@ -3,25 +3,24 @@
 
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ListOfClassActivity">
 
     <android.support.v7.widget.Toolbar
+
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:elevation="4dp"
         />
 
-
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerViewClassNames"
-        android:background="#616060"
+        android:background="#FFFFFF"
         android:scrollbars="vertical">
     </android.support.v7.widget.RecyclerView>
     

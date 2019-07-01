@@ -1,16 +1,20 @@
 package com.example.testclassroom;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SignInActivity extends AppCompatActivity {
-    static String msg = "android";
     EditText username , password;
     Button buttonSignIn;
     TextView textView;
+    static String result = "" ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,15 +29,17 @@ public class SignInActivity extends AppCompatActivity {
                     + ":" + password.getText().toString();
             TransferMessage transferMessage = new TransferMessage();
             transferMessage.execute(s);
-            WelcomeActivity.username = username.getText().toString();
-            textView.setText(msg);
+            if (result.equals("SUCCESS")){
+                SignInActivity.result = "" ;
+                Intent intent = new Intent(SignInActivity.this , ListOfClassActivity.class);
+                startActivity(intent);
+            }
+            else if(result.equals("ERROR")){
+                username.requestFocus();
+                username.setError("Wrong Username or Password");
+                Toast.makeText(SignInActivity.this,"Try Again",Toast.LENGTH_LONG).show();
+                SignInActivity.result = "" ;
+            }
         });
-
-
-//        username.setOnFocusChangeListener((v, hasFocus) -> {
-//            String check = "userChecker:" + username.getText().toString();
-//            TransferMessage sendMessage = new TransferMessage();
-//            sendMessage.execute(check);
-//        });
     }
 }

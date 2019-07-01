@@ -7,15 +7,18 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
 public class CreateHomeworkActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     TextView textViewDate;
+    Button buttonCreate;
     int year, month, day;
     int hour, minute;
     int finalHour , finalMinute;
@@ -28,6 +31,7 @@ public class CreateHomeworkActivity extends AppCompatActivity implements DatePic
         setContentView(R.layout.activity_create_homework);
 
         textViewDate = findViewById(R.id.textViewTimePicker);
+        buttonCreate = findViewById(R.id.buttonCreateHomework);
         textViewDate.setOnClickListener(v -> {
             Calendar calendar = Calendar.getInstance();
             year = calendar.get(Calendar.YEAR);
@@ -35,6 +39,10 @@ public class CreateHomeworkActivity extends AppCompatActivity implements DatePic
             day = calendar.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(CreateHomeworkActivity.this, CreateHomeworkActivity.this,year,month,day);
             datePickerDialog.show();
+            buttonCreate.setOnClickListener(v1 -> {
+                TransferMessage transferMessage = new TransferMessage();
+                transferMessage.execute();
+            });
         });
     }
 
@@ -57,6 +65,7 @@ public class CreateHomeworkActivity extends AppCompatActivity implements DatePic
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         finalHour = hourOfDay;
         finalMinute = minute;
+        Toast.makeText(CreateHomeworkActivity.this,year + "/" + month + "/" + day  + "     " + hour + ":" + minute,Toast.LENGTH_SHORT);
         Log.e("Date",finalYear + "");
         Log.e("Date",finalMonth + "");
         Log.e("Date",finalDay + "");

@@ -40,15 +40,30 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
 
                     String [] params = message.split(":");
                     switch (params[0]) {
+                        case "signUp":{
+                            if(params[1].equals("success")){
+                                WelcomeActivity.username = params[1] ;
+                                RegisterActivity.result = "SUCCESS" ;
+                            }
+                            else if(!params[1].equals("error")) {
+                                RegisterActivity.result = "ERROR" ;
+                            }
+                            break;
+                        }
+                        case "signIn" : {
+                            if (params[2].equals("success")){
+                                SignInActivity.result = "SUCCESS";
+                            }
+                            else {
+                                SignInActivity.result = "ERROR" ;
+                            }
+                            break;
+                        }
                         case "classList": {
                             MainActivity.classList.clear();
                             ListOfClassActivity.listString = message;
                         }
                             break;
-                        case "test": {
-                            SignInActivity.msg = params[1];
-                            break;
-                        }
                         case "createClass":
                         {
                             if (params[1].equals("success")){
@@ -60,7 +75,6 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                             if (params[1].equals("success")){
                                 JoinClassActivity.result = "success";
                                 JoinClassActivity.className = params[2];
-                                Log.e("joined",message) ;
                             }
                             else if (params[1].equals("error")){
                                 JoinClassActivity.result = "error";
@@ -69,15 +83,11 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                         }
                         case "homeworkList" :{
                             MainActivity.homeworkList.clear();
-                            //ListOfHomeworkActivity.arrayListHomework.clear();
                             ListOfHomeworkActivity.listOfHomework = message ;
-                            Log.e("homeworkList",ListOfHomeworkActivity.listOfHomework);
                         }
                         default:
                             break;
                     }
-
-
 
                 } catch (IOException e) {
                     e.printStackTrace();

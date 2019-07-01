@@ -45,13 +45,13 @@
         android:id="@+id/textViewTimePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="press to select date and time"
+        android:text="| press to select date and time |"
         android:layout_marginTop="25dp"
-        android:textSize="18sp"
+        android:textSize="20sp"
         />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonCreateHomework"
         android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

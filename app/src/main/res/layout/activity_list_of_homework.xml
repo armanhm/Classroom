@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -27,7 +29,7 @@
         android:layout_marginRight="20dp"
         app:fab_addButtonColorNormal="@color/colorAccent"
         app:fab_addButtonColorPressed="#E084A3"
-        app:fab_addButtonPlusIconColor="#fff">
+        app:fab_labelStyle="@style/custom_fab">
 
 
         <com.getbase.floatingactionbutton.AddFloatingActionButton
@@ -36,6 +38,8 @@
             app:fab_colorNormal="@color/design_default_color_primary"
             app:fab_colorPressed="#727EC2"
             android:id="@+id/fab_create_homework"
+            app:fab_title="Create Homework"
+            app:fab_size="mini"
             />
 
         <com.getbase.floatingactionbutton.AddFloatingActionButton
@@ -44,13 +48,18 @@
             app:fab_colorNormal="@color/design_default_color_primary"
             app:fab_colorPressed="#727EC2"
             android:id="@+id/fab_add_topic"
+            app:fab_size="mini"
+            app:fab_title="Add Topic"
             />
+
         <com.getbase.floatingactionbutton.AddFloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/design_default_color_primary"
             app:fab_colorPressed="#727EC2"
             android:id="@+id/fab_create_exam"
+            app:fab_title="Create Exam"
+            app:fab_size="mini"
             />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>

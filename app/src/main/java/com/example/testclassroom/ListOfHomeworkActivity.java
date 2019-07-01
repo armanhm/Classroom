@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import java.util.ArrayList;
@@ -17,18 +18,21 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
     static ArrayList<String> arrayListHomework;
     static String listOfHomework = "";
     ArrayList<ItemHomework> homeworkList;
-    FloatingActionsMenu fab_homework, fab_topic, fab_exam;
+    FloatingActionButton fab_homework, fab_topic, fab_exam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list_of_homework);
+
+
         fab_homework = findViewById(R.id.fab_create_homework);
         fab_topic = findViewById(R.id.fab_add_topic);
         fab_exam = findViewById(R.id.fab_create_exam);
 
-        arrayListHomework = new ArrayList<>();
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_of_homework);
+        arrayListHomework = new ArrayList<>();
 
         try {
             Thread.sleep(100);
