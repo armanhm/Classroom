@@ -47,7 +47,7 @@ public class JoinClassActivity extends AppCompatActivity {
                 } else if (code.equals("")) {
                     editTextCode.setError("Please enter code");
                 }
-            // joinClass:username:code
+            // joinClass:editTextUsername:code
         });
     }
 }
