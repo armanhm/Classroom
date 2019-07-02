@@ -1,20 +1,18 @@
 package com.example.testclassroom;
 
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.ArrayList;
 
 public class TransferMessage extends AsyncTask<String, Void, Void> {
     Socket socket;
     DataOutputStream dataOutputStream;
     DataInputStream dataInputStream;
     String message;
+    static String msg;
     //static ArrayList<Class> classes;
 
 
@@ -37,6 +35,7 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                 try {
                     dataInputStream = new DataInputStream(socket.getInputStream());
                     message = dataInputStream.readUTF();
+                    msg = message;
 
                     String [] params = message.split(":");
                     switch (params[0]) {

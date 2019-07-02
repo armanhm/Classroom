@@ -60,6 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
                 p.setUsername(username.getText().toString());
                 p.setPassword(password.getText().toString());
                 Intent intent = new Intent(RegisterActivity.this, ListOfClassActivity.class);
+                Toast.makeText(RegisterActivity.this,"Registered as "+username.getText().toString(),Toast.LENGTH_LONG).show();
                 startActivity(intent);
             }
             else if(RegisterActivity.result.equals("ERROR")){

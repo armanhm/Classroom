@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 public class SignInActivity extends AppCompatActivity {
     EditText username , password;
     Button buttonSignIn;
@@ -19,10 +21,13 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sing_in);
+
         username = findViewById(R.id.editTextUsername);
         password = findViewById(R.id.editTextPassword);
         buttonSignIn = findViewById(R.id.buttonSignIn2);
-        textView = findViewById(R.id.tvTest);
+
+        //Objects.requireNonNull(getActionBar()).setTitle("Sign in");
+        //Objects.requireNonNull(getSupportActionBar()).setTitle("Sign in");
 
         buttonSignIn.setOnClickListener(v ->{
             String s = "signIn:" + username.getText().toString()
@@ -32,6 +37,7 @@ public class SignInActivity extends AppCompatActivity {
             if (result.equals("SUCCESS")){
                 SignInActivity.result = "" ;
                 Intent intent = new Intent(SignInActivity.this , ListOfClassActivity.class);
+                Toast.makeText(SignInActivity.this,username.getText().toString() + "welcome Back!" , Toast.LENGTH_LONG).show();
                 startActivity(intent);
             }
             else if(result.equals("ERROR")){
