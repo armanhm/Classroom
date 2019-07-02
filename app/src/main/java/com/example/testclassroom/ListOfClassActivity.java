@@ -6,14 +6,12 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 
 public class ListOfClassActivity extends AppCompatActivity implements ItemArrayAdapter.OnNoteListener {
     RecyclerView recyclerView;
@@ -23,8 +21,12 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
     static Class c;
     ArrayList<ItemClass> classList;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         arrayList = new ArrayList<>();
 
         super.onCreate(savedInstanceState);
@@ -34,14 +36,8 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
 
         if (!classCode.equals("")){
             Toast.makeText(ListOfClassActivity.this,"Class Code : "+classCode,Toast.LENGTH_LONG).show();
-            //classCode = "";
         }
 
-
-
-
-//        TransferMessage transferMessage = new TransferMessage();
-//        transferMessage.execute("classList:" + WelcomeActivity.username) ;
 
         String[] s = listString.split(":");
         arrayList.addAll(Arrays.asList(s).subList(1, s.length));
@@ -69,9 +65,6 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        MenuItem itemJoin , itemCreate;
-        itemJoin = findViewById(R.id.action_join);
-        itemCreate = findViewById(R.id.action_create);
         int id = item.getItemId();
 
         if (id == R.id.action_join){
@@ -109,4 +102,5 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
         startActivity(intent);
 
     }
+
 }

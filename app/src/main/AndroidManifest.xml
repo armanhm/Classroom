@@ -17,33 +17,48 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateExamActivity"
-            android:label="Create Exam"></activity>
-        <activity android:name=".AddTopicActivity"
-            android:label="Customize Topic"/>
-        <activity android:name=".ProfileHomeworkActivity"
-            android:label="Homework Profile"/>
-        <activity android:name=".ListOfHomeworkActivity"
-            android:label="Assignments"/>
-        <activity android:name=".CreateHomeworkActivity"
-            android:label="Create Homework"/>
-        <activity android:name=".ClassActivity"
-            android:label="Class Profile"/>
-        <activity android:name=".NotificationActivity"
-            android:label="Notifications"/>
-        <activity android:name=".ListOfClassActivity"
-            android:label="Classes"/>
-        <activity android:name=".JoinClassActivity"
-            android:label="Join Class"/>
-        <activity android:name=".CreateClassActivity"
-            android:label="Class Activities"/>
-        <activity android:name=".SignInActivity"
-            android:label="Sign In"/>
-        <activity android:name=".RegisterActivity"
-            android:label="Sign Up"/>
+        <activity android:name=".PersonProfileActivity"></activity>
+        <activity
+            android:name=".CreateExamActivity"
+            android:label="Create Exam" />
+        <activity
+            android:name=".AddTopicActivity"
+            android:label="Customize Topic" />
+        <activity
+            android:name=".ProfileHomeworkActivity"
+            android:label="Homework Profile" />
+        <activity
+            android:name=".ListOfHomeworkActivity"
+            android:label="Assignments" />
+        <activity
+            android:name=".CreateHomeworkActivity"
+            android:label="Create Homework" />
+        <activity
+            android:name=".ClassActivity"
+            android:label="Class Profile" />
+        <activity
+            android:name=".NotificationActivity"
+            android:label="Notifications" />
+        <activity
+            android:name=".ListOfClassActivity"
+            android:label="Classes" />
+        <activity
+            android:name=".JoinClassActivity"
+            android:label="Join Class" />
+        <activity
+            android:name=".CreateClassActivity"
+            android:label="Class Activities" />
+        <activity
+            android:name=".SignInActivity"
+            android:label="Sign In" />
+        <activity
+            android:name=".RegisterActivity"
+            android:label="Sign Up" />
         <activity android:name=".WelcomeActivity" />
-        <activity android:name=".MainActivity"
-            android:label="Home">
+        <activity
+            android:name=".MainActivity"
+            android:label="Home"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

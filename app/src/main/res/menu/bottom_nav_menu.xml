@@ -2,12 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_classwork"
+        android:id="@+id/action_settings_bottom_navigation"
+        android:enabled="true"
+        android:title="Settings"
+        />
+
+
+    <item
+        android:id="@+id/action_classwork_bottom_navigation"
         android:enabled="true"
         android:title="Classwork"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_people"
+        android:id="@+id/action_people_bottom_Navigation"
         android:enabled="true"
         android:title="People"
         app:showAsAction="ifRoom" />

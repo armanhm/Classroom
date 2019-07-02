@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -11,16 +12,18 @@
         android:id="@+id/buttonSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
-        android:layout_marginLeft="170dp"
-        android:text="Sign in" />
+        android:layout_marginTop="270dp"
+        android:layout_marginLeft="160dp"
+        android:text="Sign in"
+        android:textSize="18sp"/>
 
     <Button
         android:id="@+id/buttonRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="170dp"
+        android:layout_marginLeft="150dp"
         android:layout_marginTop="20dp"
+        android:textSize="18sp"
         android:text="register" />
 
 </LinearLayout>

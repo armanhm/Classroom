@@ -85,6 +85,7 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                             break;
                         }
                         case "homeworkList" :{
+                            Log.e("homeworkList(transfer)",message);
                             if(params[1].equals("teacher")){
                                 ListOfHomeworkActivity.userType = "teacher";
                             }
@@ -101,6 +102,11 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                                 CreateHomeworkActivity.result = "error";
                                 //
                             }
+                        }
+                        case "people" : {
+                            ListOfHomeworkActivity.listOfTeachers = params[1];
+                            ListOfHomeworkActivity.listOfStudents = params[2];
+                            break;
                         }
                         default:
                             break;

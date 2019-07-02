@@ -27,8 +27,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp"
         android:layout_marginRight="20dp"
-        app:fab_addButtonColorNormal="@color/colorAccent"
-        app:fab_addButtonColorPressed="#E084A3"
+        app:fab_addButtonColorNormal="@color/green_light"
+        app:fab_addButtonColorPressed="#FFFFFF"
         app:fab_labelStyle="@style/custom_fab">
 
 

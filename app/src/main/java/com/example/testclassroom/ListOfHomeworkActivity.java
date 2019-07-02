@@ -1,6 +1,8 @@
 package com.example.testclassroom;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -9,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
@@ -20,17 +23,25 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
     RecyclerView recyclerViewHomework;
     static ArrayList<String> arrayListHomework;
     static String listOfHomework = "";
+    static String listOfTeachers = "" ;
+    static String listOfStudents = "" ;
     static String classCode = "";
     static String userType = "" ;
     ArrayList<ItemHomework> homeworkList;
     FloatingActionButton fab_homework, fab_topic, fab_exam;
     FloatingActionsMenu fam_main ;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_homework);
+
+
+
+        BottomNavigationView navigation = findViewById(R.id.bottom_navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         fab_homework = findViewById(R.id.fab_create_homework);
         fab_topic = findViewById(R.id.fab_add_topic);
@@ -54,10 +65,11 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
 
         homeworkList = new ArrayList<>();
 
-        for (int i = 1; i < arrayListHomework.size()-2; i++) {
+        for (int i = 2; i < arrayListHomework.size()-2; i += 3) {
             ItemHomework itemHomework = new ItemHomework(arrayListHomework.get(i),arrayListHomework.get(i+1),arrayListHomework.get(i+2));
             homeworkList.add(itemHomework);
         }
+
         ListOfClassActivity.c.setItemHomework(homeworkList);
         HomeworkAdapter homeworkAdapter = new HomeworkAdapter(R.layout.item_homework,ListOfClassActivity.c.getItemHomework(),this);
         recyclerViewHomework.setLayoutManager(new LinearLayoutManager(this));
@@ -85,6 +97,28 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
     }
 
 
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            //Fragment fragment;
+            switch (item.getItemId()) {
+                case R.id.action_settings_bottom_navigation:
+                    Toast.makeText(ListOfHomeworkActivity.this , "Settings" , Toast.LENGTH_SHORT).show();
+                    return true;
+                case R.id.action_classwork_bottom_navigation:
+                    Toast.makeText(ListOfHomeworkActivity.this , "classwork" , Toast.LENGTH_SHORT).show();
+                    return true;
+                case R.id.action_people_bottom_Navigation:
+                    Toast.makeText(ListOfHomeworkActivity.this , "People" , Toast.LENGTH_SHORT).show();
+                    return true;
+            }
+            return false;
+        }
+    };
+
+
 
 
     @Override
@@ -97,8 +131,8 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
          if (id == R.id.action_refresh_homework){
+             CreateHomeworkActivity.refreshHomework(ListOfHomeworkActivity.classCode);
             Intent intent = new Intent(ListOfHomeworkActivity.this,ListOfHomeworkActivity.class);
             startActivity(intent);
         }
@@ -107,17 +141,10 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
     }
 
 
-
-
-
-
-
-
     @Override
     public void onNoteClick(int position) {
         ItemHomework itemHomework = homeworkList.get(position);
         Intent intent = new Intent(ListOfHomeworkActivity.this,ProfileHomeworkActivity.class);
         intent.putExtra("homeworkName",itemHomework.getName());
     }
-
 }
