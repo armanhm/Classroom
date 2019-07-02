@@ -34,7 +34,7 @@ public class JoinClassActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            Log.e("result >>>" ,result) ;
+            Log.e("request >>>" ,result) ;
                 if (result.equals("success")) {
                     CreateClassActivity.refreshList();
                     Intent intent = new Intent(JoinClassActivity.this, ListOfClassActivity.class);

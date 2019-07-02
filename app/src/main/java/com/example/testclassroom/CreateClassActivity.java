@@ -13,9 +13,9 @@ public class CreateClassActivity extends AppCompatActivity {
     EditText editTextName;
     EditText editTextDescription;
     EditText editTextNumber;
-    String name , description , number;
+    String name, description, number;
     String result = "createClass:";
-    Button createClassButton , cancelButton;
+    Button createClassButton, cancelButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,27 +32,29 @@ public class CreateClassActivity extends AppCompatActivity {
             description = editTextDescription.getText().toString();
             number = editTextNumber.getText().toString();
             result = result.concat(WelcomeActivity.username + ":");
-            result = result.concat(name + ":" + description + ":") ;
-            result = result.concat(number) ;
+            result = result.concat(name + ":" + description + ":");
+            result = result.concat(number);
+
             TransferMessage transferMessage = new TransferMessage();
             transferMessage.execute(result);
-            //Log.e("sendCreate",result);
-            //refreshList();
 
-            Intent intent = new Intent(CreateClassActivity.this,ListOfClassActivity.class) ;
+
+            Intent intent = new Intent(CreateClassActivity.this, ListOfClassActivity.class);
             startActivity(intent);
+
 
             refreshList();
         });
 
         cancelButton.setOnClickListener(v -> {
-           TransferMessage transferMessage = new TransferMessage();
+            TransferMessage transferMessage = new TransferMessage();
             transferMessage.execute("error");
-            Intent intent = new Intent(CreateClassActivity.this,ListOfClassActivity.class);
+            Intent intent = new Intent(CreateClassActivity.this, ListOfClassActivity.class);
             startActivity(intent);
         });
     }
-    public static void refreshList(){
+
+    public static void refreshList() {
         TransferMessage transferMessage = new TransferMessage();
         transferMessage.execute("classList:" + WelcomeActivity.username);
     }

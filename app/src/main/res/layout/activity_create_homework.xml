@@ -19,7 +19,7 @@
         android:hint="Title" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editTextHomeworkDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -28,7 +28,7 @@
         android:hint="Description" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/editTextHomeworkPoint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -37,7 +37,7 @@
         android:inputType="number" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerHomeworkTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -49,6 +49,14 @@
         android:layout_marginTop="25dp"
         android:textSize="20sp"
         />
+
+    <TextView
+        android:id="@+id/textViewShowDate"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="25dp"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:text="" />
 
     <Button
         android:id="@+id/buttonCreateHomework"

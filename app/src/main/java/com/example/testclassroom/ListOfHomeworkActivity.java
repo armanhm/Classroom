@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
@@ -17,8 +20,11 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
     RecyclerView recyclerViewHomework;
     static ArrayList<String> arrayListHomework;
     static String listOfHomework = "";
+    static String classCode = "";
+    static String userType = "" ;
     ArrayList<ItemHomework> homeworkList;
     FloatingActionButton fab_homework, fab_topic, fab_exam;
+    FloatingActionsMenu fam_main ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +32,10 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_homework);
 
-
         fab_homework = findViewById(R.id.fab_create_homework);
         fab_topic = findViewById(R.id.fab_add_topic);
         fab_exam = findViewById(R.id.fab_create_exam);
+        fam_main = findViewById(R.id.fab_homework_main);
 
 
         arrayListHomework = new ArrayList<>();
@@ -59,6 +65,9 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
         recyclerViewHomework.setAdapter(homeworkAdapter);
 
 
+        if(ListOfHomeworkActivity.userType.equals("student")){
+            fam_main.setVisibility(View.INVISIBLE);
+        }
         fab_homework.setOnClickListener(v -> {
             Intent intent = new Intent(ListOfHomeworkActivity.this,CreateHomeworkActivity.class);
             startActivity(intent);
@@ -74,6 +83,33 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
             startActivity(intent);
         });
     }
+
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_refresh_homework, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+         if (id == R.id.action_refresh_homework){
+            Intent intent = new Intent(ListOfHomeworkActivity.this,ListOfHomeworkActivity.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+
+
 
 
 

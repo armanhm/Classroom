@@ -13,10 +13,11 @@ import android.widget.Toast;
 public class RegisterActivity extends AppCompatActivity {
 
     static Person p;
-    static String result = "" ;
+    static String result = "";
 
-    EditText username , password;
+    EditText username, password;
     Button buttonRegister;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,35 +43,33 @@ public class RegisterActivity extends AppCompatActivity {
                 String check = "userChecker:" + username.getText().toString();
                 TransferMessage transferMessage = new TransferMessage();
                 transferMessage.execute(check);
-                Toast.makeText(RegisterActivity.this, transferMessage.message,Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, transferMessage.message, Toast.LENGTH_SHORT).show();
             }
         });
 
 
-
-        buttonRegister.setOnClickListener(v ->{
+        buttonRegister.setOnClickListener(v -> {
             String s = "signUp:" + username.getText().toString() + ":" + password.getText().toString();
             TransferMessage transferMessage = new TransferMessage();
             transferMessage.execute(s);
-            if(RegisterActivity.result.equals("SUCCESS")) {
-                Log.e("tagRegister",result) ;
-                RegisterActivity.result = "" ;
-                WelcomeActivity.username = username.getText().toString();
-                p = new Person();
-                p.setUsername(username.getText().toString());
-                p.setPassword(password.getText().toString());
-                Intent intent = new Intent(RegisterActivity.this, ListOfClassActivity.class);
-                Toast.makeText(RegisterActivity.this,"Registered as "+username.getText().toString(),Toast.LENGTH_LONG).show();
-                startActivity(intent);
-            }
-            else if(RegisterActivity.result.equals("ERROR")){
-                Log.e("tagRegister",result) ;
-                RegisterActivity.result = "" ;
-                username.requestFocus();
-                username.setError("This Username is already Taken");
-            }
-            else {
-                Log.e("tagRegister","in Else");
+            while (true) {
+                if (RegisterActivity.result.equals("SUCCESS")) {
+                    Log.e("tagRegister", result);
+                    RegisterActivity.result = "";
+                    WelcomeActivity.username = username.getText().toString();
+                    p = new Person();
+                    p.setUsername(username.getText().toString());
+                    p.setPassword(password.getText().toString());
+                    Intent intent = new Intent(RegisterActivity.this, ListOfClassActivity.class);
+                    Toast.makeText(RegisterActivity.this, "Registered as " + username.getText().toString(), Toast.LENGTH_LONG).show();
+                    startActivity(intent);
+                    break;
+                } else if (RegisterActivity.result.equals("ERROR")) {
+                    Log.e("tagRegister", result);
+                    RegisterActivity.result = "";
+                    username.requestFocus();
+                    username.setError("This Username is already Taken");
+                }
             }
         });
     }

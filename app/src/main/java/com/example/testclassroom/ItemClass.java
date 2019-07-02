@@ -1,8 +1,13 @@
 package com.example.testclassroom;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class ItemClass {
     private String name;
     private String numberOfStudent;
+    //static HashMap <String,String> nameCode ;
+    static ArrayList<String> classCodes;
 
     public ItemClass(String name, String numberOfStudent) {
         this.name = name;

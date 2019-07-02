@@ -1,6 +1,7 @@
 package com.example.testclassroom;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -67,6 +68,9 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                         {
                             if (params[1].equals("success")){
                                 ListOfClassActivity.classCode = params[2];
+                                ItemClass.classCodes.add(ListOfClassActivity.classCode);
+                                //ListOfClassActivity.classCode = "";
+
                             }
                             break;
                         }
@@ -81,13 +85,26 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                             break;
                         }
                         case "homeworkList" :{
-                            MainActivity.homeworkList.clear();
+                            if(params[1].equals("teacher")){
+                                ListOfHomeworkActivity.userType = "teacher";
+                            }
+                            else if(params[1].equals("student")){
+                                ListOfHomeworkActivity.userType = "student" ;
+                            }
                             ListOfHomeworkActivity.listOfHomework = message ;
+                        }
+                        case "createHomework":{
+                            if (params[1].equals("success")){
+                                CreateHomeworkActivity.result = "success";
+                            }
+                            else if (params[1].equals("error")){
+                                CreateHomeworkActivity.result = "error";
+                                //
+                            }
                         }
                         default:
                             break;
                     }
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

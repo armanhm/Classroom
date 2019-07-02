@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class ListOfClassActivity extends AppCompatActivity implements ItemArrayAdapter.OnNoteListener {
     RecyclerView recyclerView;
@@ -24,20 +26,19 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         arrayList = new ArrayList<>();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_class);
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        CreateClassActivity.refreshList();
 
+        CreateClassActivity.refreshList();
 
         if (!classCode.equals("")){
             Toast.makeText(ListOfClassActivity.this,"Class Code : "+classCode,Toast.LENGTH_LONG).show();
-            classCode = "";
+            //classCode = "";
         }
+
+
+
 
 //        TransferMessage transferMessage = new TransferMessage();
 //        transferMessage.execute("classList:" + WelcomeActivity.username) ;
@@ -95,10 +96,14 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
         Intent intent = new Intent(ListOfClassActivity.this,ListOfHomeworkActivity.class);
 
         TransferMessage transferMessage = new TransferMessage();
-        transferMessage.execute("homeworkList:" + itemClass.getName() + ":" + WelcomeActivity.username);
+        transferMessage.execute("homeworkList:" + ItemClass.classCodes.get(position) + ":" + WelcomeActivity.username);
 
         intent.putExtra("className",itemClass.getName());
         intent.putExtra("classNumber",itemClass.getNumberOfStudent());
+
+        ListOfHomeworkActivity.classCode = ItemClass.classCodes.get(position);
+
+        CreateHomeworkActivity.classCode = classCode;
         c = new Class(RegisterActivity.p,itemClass.getName(),"description",itemClass.getNumberOfStudent());
         Toast.makeText(ListOfClassActivity.this,"class name: " + itemClass.getName(),Toast.LENGTH_LONG).show();
         startActivity(intent);

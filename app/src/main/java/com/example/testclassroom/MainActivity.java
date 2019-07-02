@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,15 +20,18 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle t;
     private NavigationView nv;
     static ArrayList<String> classList = new ArrayList<>();
-    static ArrayList<String> homeworkList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         ListOfClassActivity.arrayList = new ArrayList<>();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         buttonSignIn = findViewById(R.id.buttonSignIn);
         buttonRegister = findViewById(R.id.buttonRegister);
+
         buttonSignIn.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this,SignInActivity.class);
             startActivity(intent);
@@ -37,10 +41,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        ItemClass.classCodes = new ArrayList<>();
+
 
 
 //        dl = (DrawerLayout)findViewById(R.id.activity_main);
-//        t = new ActionBarDrawerToggle(this, dl,R.string.Open,R.string.Close);
+//        t = new ActionBarDrawerToggle(this, dl,R.request.Open,R.request.Close);
 //
 //        dl.addDrawerListener(t);
 //        t.syncState();
