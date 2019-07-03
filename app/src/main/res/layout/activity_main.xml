@@ -13,7 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="270dp"
-        android:layout_marginLeft="160dp"
+        android:background="@color/white"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginLeft="152dp"
         android:text="Sign in"
         android:textSize="18sp"/>
 
@@ -21,9 +23,12 @@
         android:id="@+id/buttonRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:layout_marginLeft="150dp"
+        android:textColor="@color/colorPrimary"
         android:layout_marginTop="20dp"
         android:textSize="18sp"
         android:text="register" />
+
 
 </LinearLayout>

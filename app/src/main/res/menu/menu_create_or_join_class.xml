@@ -17,7 +17,13 @@
                 android:id="@+id/action_join"/>
         </menu>
     </item>
+
+
     <item android:title="Refresh"
         android:id="@+id/action_refresh_list"/>
+    <item
+        android:title="Sign Out"
+        android:id="@+id/action_sign_out"
+        />
 
 </menu>

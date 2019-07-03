@@ -156,5 +156,7 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
         ItemHomework itemHomework = homeworkList.get(position);
         Intent intent = new Intent(ListOfHomeworkActivity.this, ProfileHomeworkActivity.class);
         intent.putExtra("homeworkName", itemHomework.getName());
+        startActivity(intent);
+        new TransferMessage().execute("homeworkProfile:" + itemHomework.getName()) ;
     }
 }

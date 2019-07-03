@@ -47,8 +47,8 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
             ItemClass itemClass = new ItemClass(arrayList.get(i) , arrayList.get(i+1));
             classList.add(itemClass);
         }
-        RegisterActivity.p.setItemClasses(classList);
-        ItemArrayAdapter itemArrayAdapter = new ItemArrayAdapter(R.layout.item,RegisterActivity.p.getItemClasses(),this);
+        //RegisterActivity.p.setItemClasses(classList);
+        ItemArrayAdapter itemArrayAdapter = new ItemArrayAdapter(R.layout.item,classList,this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(itemArrayAdapter);
@@ -75,6 +75,10 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
         }
         else if (id == R.id.action_refresh_list){
             Intent intent = new Intent(ListOfClassActivity.this,ListOfClassActivity.class);
+            startActivity(intent);
+        }
+        else if(id == R.id.action_sign_out){
+            Intent intent = new Intent(ListOfClassActivity.this,MainActivity.class) ;
             startActivity(intent);
         }
 
