@@ -25,8 +25,6 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-
         arrayList = new ArrayList<>();
 
         super.onCreate(savedInstanceState);

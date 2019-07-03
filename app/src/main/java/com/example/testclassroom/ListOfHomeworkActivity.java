@@ -23,13 +23,13 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
     RecyclerView recyclerViewHomework;
     static ArrayList<String> arrayListHomework;
     static String listOfHomework = "";
-    static String listOfTeachers = "" ;
-    static String listOfStudents = "" ;
+    static String listOfTeachers = "";
+    static String listOfStudents = "";
     static String classCode = "";
-    static String userType = "" ;
+    static String userType = "";
     ArrayList<ItemHomework> homeworkList;
     FloatingActionButton fab_homework, fab_topic, fab_exam;
-    FloatingActionsMenu fam_main ;
+    FloatingActionsMenu fam_main;
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -37,7 +37,6 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_homework);
-
 
 
         BottomNavigationView navigation = findViewById(R.id.bottom_navigation);
@@ -65,33 +64,33 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
 
         homeworkList = new ArrayList<>();
 
-        for (int i = 2; i < arrayListHomework.size()-2; i += 3) {
-            ItemHomework itemHomework = new ItemHomework(arrayListHomework.get(i),arrayListHomework.get(i+1),arrayListHomework.get(i+2));
+        for (int i = 2; i < arrayListHomework.size() - 2; i += 3) {
+            ItemHomework itemHomework = new ItemHomework(arrayListHomework.get(i), arrayListHomework.get(i + 1), arrayListHomework.get(i + 2));
             homeworkList.add(itemHomework);
         }
 
         ListOfClassActivity.c.setItemHomework(homeworkList);
-        HomeworkAdapter homeworkAdapter = new HomeworkAdapter(R.layout.item_homework,ListOfClassActivity.c.getItemHomework(),this);
+        HomeworkAdapter homeworkAdapter = new HomeworkAdapter(R.layout.item_homework, ListOfClassActivity.c.getItemHomework(), this);
         recyclerViewHomework.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewHomework.setItemAnimator(new DefaultItemAnimator());
         recyclerViewHomework.setAdapter(homeworkAdapter);
 
 
-        if(ListOfHomeworkActivity.userType.equals("student")){
+        if (ListOfHomeworkActivity.userType.equals("student")) {
             fam_main.setVisibility(View.INVISIBLE);
         }
         fab_homework.setOnClickListener(v -> {
-            Intent intent = new Intent(ListOfHomeworkActivity.this,CreateHomeworkActivity.class);
+            Intent intent = new Intent(ListOfHomeworkActivity.this, CreateHomeworkActivity.class);
             startActivity(intent);
         });
 
         fab_topic.setOnClickListener(v -> {
-            Intent intent = new Intent(ListOfHomeworkActivity.this,AddTopicActivity.class);
+            Intent intent = new Intent(ListOfHomeworkActivity.this, AddTopicActivity.class);
             startActivity(intent);
         });
 
         fab_exam.setOnClickListener(v -> {
-            Intent intent = new Intent(ListOfHomeworkActivity.this,CreateExamActivity.class);
+            Intent intent = new Intent(ListOfHomeworkActivity.this, CreateExamActivity.class);
             startActivity(intent);
         });
     }
@@ -105,20 +104,18 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
             //Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.action_settings_bottom_navigation:
-                    Toast.makeText(ListOfHomeworkActivity.this , "Settings" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListOfHomeworkActivity.this, "Settings", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.action_classwork_bottom_navigation:
-                    Toast.makeText(ListOfHomeworkActivity.this , "classwork" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListOfHomeworkActivity.this, "classwork", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.action_people_bottom_Navigation:
-                    Toast.makeText(ListOfHomeworkActivity.this , "People" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListOfHomeworkActivity.this, "People", Toast.LENGTH_SHORT).show();
                     return true;
             }
             return false;
         }
     };
-
-
 
 
     @Override
@@ -131,11 +128,24 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-         if (id == R.id.action_refresh_homework){
-             CreateHomeworkActivity.refreshHomework(ListOfHomeworkActivity.classCode);
-            Intent intent = new Intent(ListOfHomeworkActivity.this,ListOfHomeworkActivity.class);
+        if (id == R.id.action_refresh_homework) {
+            CreateHomeworkActivity.refreshHomework(ListOfHomeworkActivity.classCode);
+            Intent intent = new Intent(ListOfHomeworkActivity.this, ListOfHomeworkActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.action_classes) {
+            CreateClassActivity.refreshList();
+            Intent intent = new Intent(ListOfHomeworkActivity.this,ListOfClassActivity.class);
+            startActivity(intent);
+
+        } else if (id == R.id.action_notifications) {
+            Intent intent = new Intent(ListOfHomeworkActivity.this,NotificationActivity.class);
+            startActivity(intent);
+
+        } else if (id == R.id.action_about_us) {
+            Intent intent = new Intent(ListOfHomeworkActivity.this,AboutUsActivity.class);
             startActivity(intent);
         }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -144,7 +154,7 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
     @Override
     public void onNoteClick(int position) {
         ItemHomework itemHomework = homeworkList.get(position);
-        Intent intent = new Intent(ListOfHomeworkActivity.this,ProfileHomeworkActivity.class);
-        intent.putExtra("homeworkName",itemHomework.getName());
+        Intent intent = new Intent(ListOfHomeworkActivity.this, ProfileHomeworkActivity.class);
+        intent.putExtra("homeworkName", itemHomework.getName());
     }
 }

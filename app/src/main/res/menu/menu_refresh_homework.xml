@@ -7,4 +7,16 @@
 
     <item android:title="Refresh"
         android:id="@+id/action_refresh_homework"/>
+    <item
+        android:title="Classes"
+        android:id="@+id/action_classes"
+        />
+    <item
+        android:title="Notifications"
+        android:id="@+id/action_notifications"
+        />
+    <item
+        android:title="About Us"
+        android:id="@+id/action_about_us"
+        />
 </menu>
