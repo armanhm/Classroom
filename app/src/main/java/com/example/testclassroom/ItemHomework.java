@@ -1,9 +1,12 @@
 package com.example.testclassroom;
 
+import java.util.ArrayList;
+
 public class ItemHomework {
     private String name;
     private String date;
     private String numberOfComments = "0";
+    static ArrayList<String> homeworkCodes;
 
     public ItemHomework(String name, String date,String numberOfComments) {
         this.name = name;

@@ -43,8 +43,9 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
         recyclerView = findViewById(R.id.recyclerViewClassNames);
 
         classList = new ArrayList<>();
-        for (int i = 0; i < arrayList.size()-1; i += 2) {
+        for (int i = 0; i < arrayList.size()-1; i += 3) {
             ItemClass itemClass = new ItemClass(arrayList.get(i) , arrayList.get(i+1));
+            ItemClass.classCodes.add(arrayList.get(i+2));
             classList.add(itemClass);
         }
         //RegisterActivity.p.setItemClasses(classList);
@@ -88,13 +89,14 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
     @Override
     public void onNoteClick(int position) {
         ItemClass itemClass = classList.get(position);
+
         Intent intent = new Intent(ListOfClassActivity.this,ListOfHomeworkActivity.class);
 
-        TransferMessage transferMessage = new TransferMessage();
-        transferMessage.execute("homeworkList:" + ItemClass.classCodes.get(position) + ":" + WelcomeActivity.username);
+         new TransferMessage().execute("homeworkList:" + ItemClass.classCodes.get(position) + ":" + WelcomeActivity.username);
 
-        intent.putExtra("className",itemClass.getName());
-        intent.putExtra("classNumber",itemClass.getNumberOfStudent());
+        //intent.putExtra("className",itemClass.getName());
+        //intent.putExtra("classNumber",itemClass.getNumberOfStudent());
+        intent.putExtra("classCode" , ItemClass.classCodes.get(position));
 
         ListOfHomeworkActivity.classCode = ItemClass.classCodes.get(position);
 

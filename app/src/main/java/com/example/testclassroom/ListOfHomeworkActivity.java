@@ -35,6 +35,11 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        classCode = getIntent().getStringExtra("classCode");
+        ItemHomework.homeworkCodes = new ArrayList<>();
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_homework);
 
@@ -50,11 +55,6 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
 
         arrayListHomework = new ArrayList<>();
 
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         //refresh function
 
         String[] s = listOfHomework.split(":");
@@ -64,8 +64,9 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
 
         homeworkList = new ArrayList<>();
 
-        for (int i = 2; i < arrayListHomework.size() - 2; i += 3) {
+        for (int i = 2; i < arrayListHomework.size() - 2; i += 4) {
             ItemHomework itemHomework = new ItemHomework(arrayListHomework.get(i), arrayListHomework.get(i + 1), arrayListHomework.get(i + 2));
+            ItemHomework.homeworkCodes.add(arrayListHomework.get(i+3));
             homeworkList.add(itemHomework);
         }
 
@@ -156,6 +157,7 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
         ItemHomework itemHomework = homeworkList.get(position);
         Intent intent = new Intent(ListOfHomeworkActivity.this, ProfileHomeworkActivity.class);
         intent.putExtra("homeworkName", itemHomework.getName());
+        intent.putExtra("homeworkCode" , ItemHomework.homeworkCodes.get(position));
         startActivity(intent);
         new TransferMessage().execute("homeworkProfile:" + itemHomework.getName()) ;
     }

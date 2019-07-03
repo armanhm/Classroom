@@ -25,13 +25,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:id="@+id/homework_name"
-            
             android:layout_height="wrap_content"
             android:text="Homework Name"/>
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
-            android:id="@+id/editText_add_comment"
+            android:id="@+id/textView_public_comment"
             android:layout_height="wrap_content"
             android:hint="Add a Comment"
             />

@@ -38,29 +38,27 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                     message = dataInputStream.readUTF();
                     msg = message;
 
-                    String [] params = message.split(":");
+                    String[] params = message.split(":");
                     switch (params[0]) {
-                        case "signUp":{
-                            if(params[1].equals("success")){
-                                WelcomeActivity.username = params[1] ;
-                                RegisterActivity.result = "SUCCESS" ;
-                            }
-                            else if(!params[1].equals("error")) {
-                                RegisterActivity.result = "ERROR" ;
+                        case "signUp": {
+                            if (params[1].equals("success")) {
+                                WelcomeActivity.username = params[1];
+                                RegisterActivity.result = "SUCCESS";
+                            } else if (!params[1].equals("error")) {
+                                RegisterActivity.result = "ERROR";
                             }
                             break;
                         }
-                        case "userChecker":{
+                        case "userChecker": {
                             RegisterActivity.result = params[2];
-                            Log.e("tag User Checker",message) ;
+                            Log.e("tag User Checker", message);
                             break;
                         }
-                        case "signIn" : {
-                            if (params[2].equals("success")){
+                        case "signIn": {
+                            if (params[2].equals("success")) {
                                 SignInActivity.result = "SUCCESS";
-                            }
-                            else {
-                                SignInActivity.result = "ERROR" ;
+                            } else {
+                                SignInActivity.result = "ERROR";
                             }
                             break;
                         }
@@ -68,10 +66,9 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                             MainActivity.classList.clear();
                             ListOfClassActivity.listString = message;
                         }
-                            break;
-                        case "createClass":
-                        {
-                            if (params[1].equals("success")){
+                        break;
+                        case "createClass": {
+                            if (params[1].equals("success")) {
                                 ListOfClassActivity.classCode = params[2];
                                 ItemClass.classCodes.add(ListOfClassActivity.classCode);
                                 //ListOfClassActivity.classCode = "";
@@ -79,36 +76,33 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                             }
                             break;
                         }
-                        case "joinClass" :{
-                            if (params[1].equals("success")){
+                        case "joinClass": {
+                            if (params[1].equals("success")) {
                                 JoinClassActivity.result = "success";
                                 JoinClassActivity.className = params[2];
-                            }
-                            else if (params[1].equals("error")){
+                            } else if (params[1].equals("error")) {
                                 JoinClassActivity.result = "error";
                             }
                             break;
                         }
-                        case "homeworkList" :{
-                            Log.e("homeworkList(transfer)",message);
-                            if(params[1].equals("teacher")){
+                        case "homeworkList": {
+                            Log.e("homeworkList(transfer)", message);
+                            if (params[1].equals("teacher")) {
                                 ListOfHomeworkActivity.userType = "teacher";
+                            } else if (params[1].equals("student")) {
+                                ListOfHomeworkActivity.userType = "student";
                             }
-                            else if(params[1].equals("student")){
-                                ListOfHomeworkActivity.userType = "student" ;
-                            }
-                            ListOfHomeworkActivity.listOfHomework = message ;
+                            ListOfHomeworkActivity.listOfHomework = message;
                         }
-                        case "createHomework":{
-                            if (params[1].equals("success")){
+                        case "createHomework": {
+                            if (params[1].equals("success")) {
                                 CreateHomeworkActivity.result = "success";
-                            }
-                            else if (params[1].equals("error")){
+                            } else if (params[1].equals("error")) {
                                 CreateHomeworkActivity.result = "error";
                                 //
                             }
                         }
-                        case "people" : {
+                        case "people": {
                             ListOfHomeworkActivity.listOfTeachers = params[1];
                             ListOfHomeworkActivity.listOfStudents = params[2];
                             break;
@@ -116,6 +110,10 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                         case "homeworkProfile": {
                             ProfileHomeworkActivity.homeworkProfileResult = message;
 
+                        }
+                        case "commentsList:" :{
+                            ListOfCommentsActivity.result = message ;
+                            break;
                         }
                         default:
                             break;
