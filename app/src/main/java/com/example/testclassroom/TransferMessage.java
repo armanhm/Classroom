@@ -113,6 +113,10 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                             ListOfHomeworkActivity.listOfStudents = params[2];
                             break;
                         }
+                        case "homeworkProfile": {
+                            ProfileHomeworkActivity.homeworkProfileResult = message;
+
+                        }
                         default:
                             break;
                     }
