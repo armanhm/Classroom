@@ -22,11 +22,14 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
         String s = voids[0];
 
         try {
-            socket = new Socket("192.168.56.1", 8867);
+            //192.168.56.1 // Emulator
+            // 192.168.43.80  The Real
+            socket = new Socket("192.168.43.80", 8867);
             new Thread(() -> {
                 try {
                     dataOutputStream = new DataOutputStream(socket.getOutputStream());
                     dataOutputStream.writeUTF(s);
+                    Log.e("SEND::" , s);
                     dataOutputStream.flush();
                 } catch (IOException e) {
                     e.printStackTrace();

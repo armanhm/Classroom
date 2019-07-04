@@ -23,7 +23,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     static Person p;
     static String result = "";
-
+    boolean onTime = false;
 
     EditText editTextUsername, editTextPassword;
     Button buttonRegister;
@@ -38,81 +38,48 @@ public class RegisterActivity extends AppCompatActivity {
         buttonRegister = findViewById(R.id.buttonSignUp);
         imageViewChoosePicture = findViewById(R.id.imageViewChoosePicture);
 
-
-        editTextPassword.setOnClickListener(v -> {
+        editTextUsername.setOnFocusChangeListener((v, hasFocus) -> {
             if (!editTextUsername.getText().toString().equals("")) {
                 String check = "userChecker:" + editTextUsername.getText().toString();
                 TransferMessage transferMessage = new TransferMessage();
                 transferMessage.execute(check);
                 Toast.makeText(RegisterActivity.this, transferMessage.message, Toast.LENGTH_SHORT).show();
-                while (result.equals("")) {
-                    Log.e("the Result", result);
-                    if (!result.equals("")) {
-                        break;
-                    }
-                }
-                if (result.equals("repeated")) {
+                if (result.equals("repeated") && !onTime) {
                     RegisterActivity.result = "";
                     editTextUsername.requestFocus();
                     editTextUsername.setError("Repeated Username");
                 }
-            }
-            else {
+            } else {
                 editTextUsername.requestFocus();
                 editTextUsername.setError("Please Enter Username");
             }
         });
 
+    }
 
-        buttonRegister.setOnClickListener(v -> {
+
+    public void buttonRegisterOnClick(View view) {
+        if (editTextUsername.getText().toString().equals("")) {
+            //  editTextUsername.requestFocus();
+            editTextUsername.setError("Please Enter Username");
+        }
+        if (!editTextUsername.getText().toString().equals("") && !editTextPassword.getText().toString().equals("")) {
             new TransferMessage().execute("signUp:" + editTextUsername.getText().toString() + ":" + editTextPassword.getText().toString());
             WelcomeActivity.username = editTextUsername.getText().toString();
-            while (result.equals("")){
-                if(!result.equals("")){
-                    break;
-                }
-            }
-            if (result.equals("ERROR")){
-                editTextUsername.requestFocus();
-                editTextUsername.setError("repeated username");
-            }
-            else if (result.equals("SUCCESS")){
-                Intent intent = new Intent(RegisterActivity.this,ChoosePictureActivity.class);
-                startActivity(intent);
-            }
 
-            //******************************************************
-            if (editTextUsername.getText().toString().equals("")) {
-                editTextUsername.requestFocus();
-                editTextUsername.setError("Please Enter Username");
-            } else {
-                String s = "signUp:" + editTextUsername.getText().toString() + ":" + editTextPassword.getText().toString();
-                TransferMessage transferMessage = new TransferMessage();
-                transferMessage.execute(s);
-                while (!RegisterActivity.result.equals("SUCCESS")) {
-                        Log.e("tagRegister", result);
-                        RegisterActivity.result = "";
-                        editTextUsername.requestFocus();
-                        editTextUsername.setError("This Username is already Taken");
-
-                }
-
+             if (result.equals("SUCCESS")) {
                 Log.e("tagRegister", result);
                 RegisterActivity.result = "";
                 WelcomeActivity.username = editTextUsername.getText().toString();
                 p = new Person();
                 p.setUsername(editTextUsername.getText().toString());
                 p.setPassword(editTextPassword.getText().toString());
-                Intent intent = new Intent(RegisterActivity.this, ListOfClassActivity.class);
-                Toast.makeText(RegisterActivity.this, "Registered as " + editTextUsername.getText().toString(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(RegisterActivity.this, ChoosePictureActivity.class);
                 startActivity(intent);
             }
-        });
-
-
+        }
 
     }
 
-
-
 }
+

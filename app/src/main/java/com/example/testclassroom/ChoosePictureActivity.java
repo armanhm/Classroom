@@ -1,16 +1,22 @@
 package com.example.testclassroom;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Objects;
 
 public class ChoosePictureActivity extends AppCompatActivity {
@@ -20,18 +26,36 @@ public class ChoosePictureActivity extends AppCompatActivity {
     ImageView imageViewChoosePicture;
     TextView textViewChoosePicture ;
     Button buttonSkip ;
-
+    String pathImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_picture);
+
+        Drawable img = getResources().getDrawable(R.drawable.user);
+        pathImage = img.toString();
+
+
+
         imageViewChoosePicture = findViewById(R.id.imageViewChoosePicture);
         buttonSkip = findViewById(R.id.button_skip);
         textViewChoosePicture = findViewById(R.id.textView_choose_photo) ;
 
         imageViewChoosePicture.setOnClickListener(v -> {
             pickFromGallery();
+        });
+
+        buttonSkip.setOnClickListener(v -> {
+            Intent intent = new Intent(ChoosePictureActivity.this,ListOfClassActivity.class);
+            startActivity(intent);
+            if (textViewChoosePicture.getText().toString().equals("Skip")){
+                new TransferMessage().execute("imageProfile:"+ WelcomeActivity.username + ":noImage") ;
+            }
+            else {
+                //String stringURI = getBase64String();
+                new TransferMessage().execute("imageProfile:" + WelcomeActivity.username + ":" + "imageTest");
+            }
         });
 
 
@@ -53,6 +77,20 @@ public class ChoosePictureActivity extends AppCompatActivity {
             buttonSkip.setText("Next");
 
         }
+    }
+
+    private String getBase64String() {
+
+        // give your image file url in mCurrentPhotoPath
+        Bitmap bitmap = BitmapFactory.decodeFile(pathImage);
+
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        // In case you want to compress your image, here it's at 40%
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+
+        return Base64.encodeToString(byteArray, Base64.DEFAULT);
     }
 
 

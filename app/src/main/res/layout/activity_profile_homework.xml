@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_weight="20"
         android:orientation="vertical"
-        android:background="@color/green_light"
+        android:background="@color/our_favorite_blue"
         android:layout_height="wrap_content">
 
         <ImageView
@@ -24,12 +24,15 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:id="@+id/homework_name"
+            android:id="@+id/textView_homework_name"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="Homework Name"/>
 
         <TextView
             android:layout_width="match_parent"
+            android:textColor="@color/white"
             android:id="@+id/textView_public_comment"
             android:layout_height="wrap_content"
             android:hint="Add a Comment"
@@ -42,12 +45,13 @@
         android:layout_height="wrap_content"
         android:layout_weight="15"
         android:orientation="horizontal"
-        android:background="@color/light_green">
+        android:background="@color/white">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView_show_assignment"
+            android:textColor="@color/white"
             android:text="assignment1"/>
 
         

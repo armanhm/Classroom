@@ -37,6 +37,7 @@ public class SignInActivity extends AppCompatActivity {
             if (result.equals("SUCCESS")){
                 SignInActivity.result = "" ;
                 WelcomeActivity.username = username.getText().toString();
+                CreateClassActivity.refreshList();
                 Intent intent = new Intent(SignInActivity.this , ListOfClassActivity.class);
                 Toast.makeText(SignInActivity.this,username.getText().toString() + "welcome Back!" , Toast.LENGTH_LONG).show();
                 startActivity(intent);

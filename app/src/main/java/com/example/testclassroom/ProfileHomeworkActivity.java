@@ -3,7 +3,6 @@ package com.example.testclassroom;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,9 +14,9 @@ public class ProfileHomeworkActivity extends AppCompatActivity {
 
     Button buttonMarkAsDone;
     EditText editTextPrivateComment, editTextAttachment;
-    TextView textViewClassName, textViewAssignment , textViewPublicComment;
+    TextView textViewHomeworkName, textViewAssignment , textViewPublicComment;
     ImageView imageViewBack;
-    String name, comments, assignments;
+    String name = "", comments = "", assignments = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,7 @@ public class ProfileHomeworkActivity extends AppCompatActivity {
         editTextPrivateComment = findViewById(R.id.editText_private_comment);
         editTextAttachment = findViewById(R.id.editText_attachment);
         textViewPublicComment = findViewById(R.id.textView_public_comment);
-        textViewClassName = findViewById(R.id.textViewClassName);
+        textViewHomeworkName = findViewById(R.id.textView_homework_name);
         textViewAssignment = findViewById(R.id.textView_show_assignment);
         imageViewBack = findViewById(R.id.imageView_back);
 
@@ -57,7 +56,7 @@ public class ProfileHomeworkActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        textViewClassName.setText(name);
+        textViewHomeworkName.setText(name);
         textViewAssignment.setText(assignments);
         showComments(comments);
     }

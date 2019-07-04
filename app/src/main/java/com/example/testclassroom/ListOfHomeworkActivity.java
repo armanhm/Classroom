@@ -102,25 +102,21 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            //Fragment fragment;
-            switch (item.getItemId()) {
-                case R.id.action_settings_bottom_navigation:
-                    Toast.makeText(ListOfHomeworkActivity.this, "Settings", Toast.LENGTH_SHORT).show();
-                    return true;
-                case R.id.action_classwork_bottom_navigation:
-                    Toast.makeText(ListOfHomeworkActivity.this, "classwork", Toast.LENGTH_SHORT).show();
-                    return true;
-                case R.id.action_people_bottom_Navigation:
-                    Toast.makeText(ListOfHomeworkActivity.this, "People", Toast.LENGTH_SHORT).show();
-                    return true;
-            }
-            return false;
-        }
-    };
+            = item -> {
+                //Fragment fragment;
+                switch (item.getItemId()) {
+                    case R.id.action_settings_bottom_navigation:
+                        Toast.makeText(ListOfHomeworkActivity.this, "Settings", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.action_classwork_bottom_navigation:
+                        Toast.makeText(ListOfHomeworkActivity.this, "classwork", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.action_people_bottom_Navigation:
+                        Toast.makeText(ListOfHomeworkActivity.this, "People", Toast.LENGTH_SHORT).show();
+                        return true;
+                }
+                return false;
+            };
 
 
     @Override
@@ -164,6 +160,7 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
         intent.putExtra("homeworkName", itemHomework.getName());
         intent.putExtra("homeworkCode" , ItemHomework.homeworkCodes.get(position));
         startActivity(intent);
-        new TransferMessage().execute("homeworkProfile:" + itemHomework.getName()) ;
+        //new TransferMessage().execute("homeworkProfile:" + itemHomework.getName()) ;
+
     }
 }

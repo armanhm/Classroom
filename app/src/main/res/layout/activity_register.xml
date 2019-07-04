@@ -36,5 +36,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="50dp"
+        android:onClick="buttonRegisterOnClick"
         android:text="Register" />
 </android.support.v7.widget.LinearLayoutCompat>
