@@ -36,16 +36,19 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                 try {
                     dataInputStream = new DataInputStream(socket.getInputStream());
                     message = dataInputStream.readUTF();
+                    Log.e("SERVER" ,  message);
                     msg = message;
 
                     String[] params = message.split(":");
                     switch (params[0]) {
                         case "signUp": {
-                            if (params[1].equals("success")) {
-                                WelcomeActivity.username = params[1];
-                                RegisterActivity.result = "SUCCESS";
-                            } else if (!params[1].equals("error")) {
-                                RegisterActivity.result = "ERROR";
+                            if (params[1].equals(WelcomeActivity.username)){
+                                if (params[2].equals("success")) {
+                                    //WelcomeActivity.username = params[1];
+                                    RegisterActivity.result = "SUCCESS";
+                                } else if (!params[2].equals("error")) {
+                                    RegisterActivity.result = "ERROR";
+                                }
                             }
                             break;
                         }
@@ -93,6 +96,7 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                                 ListOfHomeworkActivity.userType = "student";
                             }
                             ListOfHomeworkActivity.listOfHomework = message;
+                            break;
                         }
                         case "createHomework": {
                             if (params[1].equals("success")) {
@@ -101,6 +105,7 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                                 CreateHomeworkActivity.result = "error";
                                 //
                             }
+                            break;
                         }
                         case "people": {
                             ListOfHomeworkActivity.listOfTeachers = params[1];

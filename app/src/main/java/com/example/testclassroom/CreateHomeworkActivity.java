@@ -64,13 +64,14 @@ public class CreateHomeworkActivity extends AppCompatActivity implements DatePic
 
             request = request.concat(title + ":" + description + ":" + points + ":" + topic + ":" + date + ":" + time + ":" + ListOfHomeworkActivity.classCode);
             new TransferMessage().execute(request) ;
-            Log.e("CreateHomework" , request);
+           // Log.e("CreateHomework" , request);
 
 //            if (result.equals("success")){
 //                Log.e("resultHomework",request) ;
 //                result = "" ;
                 CreateHomeworkActivity.refreshHomework(ListOfHomeworkActivity.classCode);
                 Intent intent = new Intent(CreateHomeworkActivity.this,ListOfHomeworkActivity.class);
+                intent.putExtra("classCode" , ListOfHomeworkActivity.classCode);
                 startActivity(intent);
 
 //            }
@@ -100,7 +101,7 @@ public class CreateHomeworkActivity extends AppCompatActivity implements DatePic
     }
 
     public static void refreshHomework(String classCode){
-        Log.e("refreshHomework",classCode) ;
+        //Log.e("refreshHomework",classCode) ;
         new TransferMessage().execute("homeworkList:" + classCode + ":" + WelcomeActivity.username );
     }
 }

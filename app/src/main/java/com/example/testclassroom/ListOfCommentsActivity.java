@@ -20,7 +20,6 @@ public class ListOfCommentsActivity extends AppCompatActivity {
         ArrayList <ItemComment> itemComments = new ArrayList<>() ;
 
 
-
         String[] s = result.split(":");
         //itemComments.addAll(Arrays.asList(s).subList(1, s.length));
 

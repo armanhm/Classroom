@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,7 +36,7 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        classCode = getIntent().getStringExtra("classCode");
+
         ItemHomework.homeworkCodes = new ArrayList<>();
 
 
@@ -63,6 +64,9 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
         recyclerViewHomework = findViewById(R.id.recyclerViewHomework);
 
         homeworkList = new ArrayList<>();
+
+        Log.e("classCode" , classCode);
+
 
         for (int i = 2; i < arrayListHomework.size() - 2; i += 4) {
             ItemHomework itemHomework = new ItemHomework(arrayListHomework.get(i), arrayListHomework.get(i + 1), arrayListHomework.get(i + 2));
@@ -130,7 +134,8 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_refresh_homework) {
-            CreateHomeworkActivity.refreshHomework(ListOfHomeworkActivity.classCode);
+            new TransferMessage().execute("homeworkList:" + classCode + ":" +  WelcomeActivity.username);
+            //   CreateHomeworkActivity.refreshHomework(ListOfHomeworkActivity.classCode);
             Intent intent = new Intent(ListOfHomeworkActivity.this, ListOfHomeworkActivity.class);
             startActivity(intent);
         } else if (id == R.id.action_classes) {

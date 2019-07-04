@@ -7,14 +7,7 @@
     android:orientation="vertical"
     tools:context=".RegisterActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="100dp"
-        app:srcCompat="@drawable/user"
-        />
+
 
     <EditText
         android:id="@+id/editTextUsername2"

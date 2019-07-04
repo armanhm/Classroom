@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
     static String classCode = "";
     static Class c;
     ArrayList<ItemClass> classList;
+    static ItemArrayAdapter itemArrayAdapter;
 
 
     @Override
@@ -37,6 +39,7 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
         }
 
 
+        //listString is result of server
         String[] s = listString.split(":");
         arrayList.addAll(Arrays.asList(s).subList(1, s.length));
 
@@ -49,10 +52,11 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
             classList.add(itemClass);
         }
         //RegisterActivity.p.setItemClasses(classList);
-        ItemArrayAdapter itemArrayAdapter = new ItemArrayAdapter(R.layout.item,classList,this);
+        itemArrayAdapter = new ItemArrayAdapter(R.layout.item,classList,this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(itemArrayAdapter);
+
     }
 
     @Override
@@ -75,6 +79,15 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
             startActivity(intent);
         }
         else if (id == R.id.action_refresh_list){
+            new TransferMessage().execute("classList:" + WelcomeActivity.username);
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+//            itemArrayAdapter.updateList(classList);
+
+
             Intent intent = new Intent(ListOfClassActivity.this,ListOfClassActivity.class);
             startActivity(intent);
         }
@@ -99,6 +112,7 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
         intent.putExtra("classCode" , ItemClass.classCodes.get(position));
 
         ListOfHomeworkActivity.classCode = ItemClass.classCodes.get(position);
+        Log.e("ListOfClassCode" , ListOfHomeworkActivity.classCode);
 
         CreateHomeworkActivity.classCode = classCode;
         c = new Class(RegisterActivity.p,itemClass.getName(),"description",itemClass.getNumberOfStudent());
