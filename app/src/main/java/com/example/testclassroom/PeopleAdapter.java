@@ -32,9 +32,9 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull PeopleAdapter.ViewHolder viewHolder, int i) {
         TextView textViewName = viewHolder.textViewName;
-        ImageView imageViewProfile = viewHolder.imageViewProfile ;
+        //ImageView imageViewProfile = viewHolder.imageViewProfile ;
         textViewName.setText(itemList.get(i).getUsername());
-        imageViewProfile.setImageURI(itemList.get(i).getImage());
+        //imageViewProfile.setImageURI(itemList.get(i).getImage());
     }
 
     @Override

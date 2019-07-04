@@ -1,12 +1,10 @@
 package com.example.testclassroom;
 
-import android.net.Uri;
 
-import java.net.URI;
 
 public class ItemPeople {
     private String username ;
-    private Uri image ;
+    private String image ;
 
     public String getUsername() {
         return username;
@@ -16,15 +14,15 @@ public class ItemPeople {
         this.username = username;
     }
 
-    public Uri getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Uri image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
-    public ItemPeople(String username, Uri image) {
+    public ItemPeople(String username, String image) {
 
 
         this.username = username;
