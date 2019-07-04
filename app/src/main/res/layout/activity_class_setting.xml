@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ClassSettingActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="170dp"
+        android:textColor="@color/green_dark"
+        android:textSize="24sp"
+        android:text="About"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="100"
+        android:layout_margin="20dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="title"
+            android:id="@+id/textView_class_title"
+            android:layout_weight="50"
+            />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_class_title"
+            android:hint="Edit Title"
+            android:layout_weight="50
+"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="100"
+        android:layout_margin="20dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:id="@+id/textView_class_description"
+            android:layout_weight="50"
+            />
+        <EditText
+            android:layout_width="wrap_content"
+            android:id="@+id/editText_class_description"
+            android:layout_height="wrap_content"
+            android:hint="Edit Description"
+            android:layout_weight="50
+"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="100"
+        android:layout_margin="20dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_class_room"
+            android:text="Room"
+            android:layout_weight="50"
+            />
+        <EditText
+            android:id="@+id/editText_class_room"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Edit Room"
+            android:layout_weight="50
+"/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/green_dark"
+        android:layout_marginLeft="170dp"
+        android:textSize="24sp"
+        android:text="General"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="100"
+        android:layout_margin="20dp"
+        >
+
+        <TextView
+            android:id="@+id/textView_class_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Class Code"
+            android:layout_weight="50"
+            />
+
+
+    </LinearLayout>
+
+</LinearLayout>
