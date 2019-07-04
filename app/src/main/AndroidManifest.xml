@@ -17,11 +17,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ClassSettingActivity"></activity>
-        <activity android:name=".ChoosePictureActivity" />
-        <activity android:name=".ListOfCommentsActivity" />
-        <activity android:name=".AboutUsActivity" />
-        <activity android:name=".PersonProfileActivity" />
+        <activity android:name=".ClassSettingActivity"
+            android:label="Settings"></activity>
+        <activity android:name=".ChoosePictureActivity"
+            android:label="Choose Picture"/>
+        <activity android:name=".ListOfCommentsActivity"
+            android:label="Comments"/>
+        <activity android:name=".AboutUsActivity"
+            android:label="About Us"/>
+        <activity android:name=".PersonProfileActivity"
+            android:label="Profile"/>
         <activity
             android:name=".CreateExamActivity"
             android:label="Create Exam" />

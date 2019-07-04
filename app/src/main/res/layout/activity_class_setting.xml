@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="170dp"
-        android:textColor="@color/green_dark"
+        android:textColor="@color/green_light"
         android:textSize="24sp"
         android:text="About"/>
 
@@ -27,7 +27,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="title"
+            android:text="Title"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"
             android:id="@+id/textView_class_title"
             android:layout_weight="50"
             />
@@ -36,6 +38,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/editText_class_title"
             android:hint="Edit Title"
+            android:textColor="@color/colorPrimary"
             android:layout_weight="50
 "/>
 
@@ -54,6 +57,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Description"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"
             android:id="@+id/textView_class_description"
             android:layout_weight="50"
             />
@@ -62,6 +67,7 @@
             android:id="@+id/editText_class_description"
             android:layout_height="wrap_content"
             android:hint="Edit Description"
+            android:textColor="@color/colorPrimary"
             android:layout_weight="50
 "/>
 
@@ -79,7 +85,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView_class_room"
-            android:text="Room"
+            android:text="Room Number"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"
             android:layout_weight="50"
             />
         <EditText
@@ -87,6 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Edit Room"
+            android:textColor="@color/colorPrimary"
             android:layout_weight="50
 "/>
 
@@ -96,7 +105,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/green_dark"
+        android:textColor="@color/green_light"
         android:layout_marginLeft="170dp"
         android:textSize="24sp"
         android:text="General"/>
@@ -114,6 +123,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Class Code"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_weight="50"
+            />
+
+        <TextView
+            android:id="@+id/textView_class_code2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Code"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"
             android:layout_weight="50"
             />
 

@@ -123,6 +123,10 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                             ListOfCommentsActivity.result = message ;
                             break;
                         }
+                        case "classInfo" : {
+                            ClassSettingActivity.result = message ;
+                            break;
+                        }
                         default:
                             break;
                     }

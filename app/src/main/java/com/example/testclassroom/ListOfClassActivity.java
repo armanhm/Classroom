@@ -85,7 +85,6 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-//            itemArrayAdapter.updateList(classList);
 
 
             Intent intent = new Intent(ListOfClassActivity.this,ListOfClassActivity.class);
@@ -107,8 +106,7 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
 
          new TransferMessage().execute("homeworkList:" + ItemClass.classCodes.get(position) + ":" + WelcomeActivity.username);
 
-        //intent.putExtra("className",itemClass.getName());
-        //intent.putExtra("classNumber",itemClass.getNumberOfStudent());
+
         intent.putExtra("classCode" , ItemClass.classCodes.get(position));
 
         ListOfHomeworkActivity.classCode = ItemClass.classCodes.get(position);
@@ -116,7 +114,7 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
 
         CreateHomeworkActivity.classCode = classCode;
         c = new Class(RegisterActivity.p,itemClass.getName(),"description",itemClass.getNumberOfStudent());
-        Toast.makeText(ListOfClassActivity.this,"class name: " + itemClass.getName(),Toast.LENGTH_LONG).show();
+        Toast.makeText(ListOfClassActivity.this,"class title: " + itemClass.getName(),Toast.LENGTH_LONG).show();
         startActivity(intent);
 
     }

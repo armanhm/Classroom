@@ -87,7 +87,7 @@ public class ClassActivity extends AppCompatActivity {
 //        Intent intent = new Intent(ListOfClassActivity.this,ClassActivity.class);
 //        intent.putExtra("className",itemClass.getName());
 //        intent.putExtra("classNumber",itemClass.getNumberOfStudent());
-//        Toast.makeText(ListOfClassActivity.this,"class name: " + itemClass.getName(),Toast.LENGTH_LONG).show();
+//        Toast.makeText(ListOfClassActivity.this,"class title: " + itemClass.getName(),Toast.LENGTH_LONG).show();
 //        startActivity(intent);
 //
 //    }
