@@ -20,7 +20,7 @@ public class ClassSettingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        updateClassInfo(classCode);
+        //updateClassInfo(classCode);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_setting);
@@ -34,7 +34,7 @@ public class ClassSettingActivity extends AppCompatActivity {
         textViewTitle = findViewById(R.id.textView_class_title);
         textViewDescription = findViewById(R.id.textView_class_description);
         textViewRoomNumber = findViewById(R.id.textView_class_room);
-        textViewClassCode = findViewById(R.id.textView_class_code);
+        textViewClassCode = findViewById(R.id.textView_class_code2);
 
         editTextTitle = findViewById(R.id.editText_class_title);
         editTextDescription = findViewById(R.id.editText_class_description);
@@ -67,7 +67,8 @@ public class ClassSettingActivity extends AppCompatActivity {
 
         int id = item.getItemId();
         if(id == R.id.action_save_class_setting){
-            request = request.concat(classCode + ":" + newTitle + newDescription + newRoomNumber);
+            request = request.concat(classCode + ":" + newTitle + ":" + newDescription + ":" + newRoomNumber);
+            new TransferMessage().execute(request);
             Toast.makeText(this,"The changes successfully saved!" , Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(ClassSettingActivity.this,ListOfHomeworkActivity.class);
             startActivity(intent);

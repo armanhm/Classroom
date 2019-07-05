@@ -60,7 +60,7 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                             Log.e("tag User Checker", message);
                             break;
                         }
-                        case "signin": {
+                        case "signIn": {
                             if (params[2].equals("success")) {
                                 SignInActivity.result = "SUCCESS";
                             } else {

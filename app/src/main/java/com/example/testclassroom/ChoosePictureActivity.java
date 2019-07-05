@@ -1,6 +1,7 @@
 package com.example.testclassroom;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -33,8 +34,7 @@ public class ChoosePictureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_picture);
 
-        Drawable img = getResources().getDrawable(R.drawable.user);
-        pathImage = img.toString();
+        //Drawable img = getResources().getDrawable(R.drawable.user);
 
 
 
@@ -53,6 +53,7 @@ public class ChoosePictureActivity extends AppCompatActivity {
                 new TransferMessage().execute("imageProfile:"+ WelcomeActivity.username + ":noImage") ;
             }
             else {
+                //pathImage = getRealPathFromURI(imageUri);
                 //String stringURI = getBase64String();
                 new TransferMessage().execute("imageProfile:" + WelcomeActivity.username + ":" + "imageTest");
             }
@@ -62,6 +63,7 @@ public class ChoosePictureActivity extends AppCompatActivity {
     }
 
     private void pickFromGallery() {
+        Log.e("TagPick" , "picked");
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(intent, PICK_IMAGE);
     }
@@ -71,6 +73,7 @@ public class ChoosePictureActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
             imageUri = Objects.requireNonNull(data).getData();
+            Log.e("imageURI" , "test");
             imageViewChoosePicture.setImageURI(imageUri);
             stringUri = imageUri.toString();
             textViewChoosePicture.setText("Image Added Successfully!");
@@ -91,6 +94,21 @@ public class ChoosePictureActivity extends AppCompatActivity {
         byte[] byteArray = byteArrayOutputStream.toByteArray();
 
         return Base64.encodeToString(byteArray, Base64.DEFAULT);
+    }
+
+    public String getRealPathFromURI(Uri contentUri) {
+
+        // can post image
+        String [] proj={MediaStore.Images.Media.DATA};
+        Cursor cursor = managedQuery( contentUri,
+                proj, // Which columns to return
+                null,       // WHERE clause; which rows to return (all rows)
+                null,       // WHERE clause selection arguments (none)
+                null); // Order-by clause (ascending by name)
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+
+        return cursor.getString(column_index);
     }
 
 
