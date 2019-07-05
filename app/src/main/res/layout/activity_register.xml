@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:layout_marginTop="70dp"
-        android:layout_marginLeft="100dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="120dp"
         android:hint="Username(required)"
          />
 
@@ -27,15 +27,15 @@
         android:ems="10"
         android:inputType="textPassword"
         android:hint="Password"
-        android:layout_marginLeft="100dp"
+        android:layout_marginLeft="120dp"
          />
 
-    <Button
+    <android.support.design.button.MaterialButton
         android:id="@+id/buttonSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="150dp"
+        android:layout_marginLeft="170dp"
         android:layout_marginTop="50dp"
         android:onClick="buttonRegisterOnClick"
-        android:text="Register" />
+        android:text=" Register " />
 </android.support.v7.widget.LinearLayoutCompat>

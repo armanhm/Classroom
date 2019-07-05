@@ -30,7 +30,7 @@ public class SignInActivity extends AppCompatActivity {
         //Objects.requireNonNull(getSupportActionBar()).setTitle("Sign in");
 
         buttonSignIn.setOnClickListener(v ->{
-            String s = "signIn:" + username.getText().toString()
+            String s = "signin:" + username.getText().toString()
                     + ":" + password.getText().toString();
             TransferMessage transferMessage = new TransferMessage();
             transferMessage.execute(s);

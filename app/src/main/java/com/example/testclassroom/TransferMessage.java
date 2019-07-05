@@ -24,7 +24,7 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
         try {
             //192.168.56.1 // Emulator
             // 192.168.43.80  The Real
-            socket = new Socket("192.168.43.80", 8867);
+            socket = new Socket("192.168.43.80", 8850);
             new Thread(() -> {
                 try {
                     dataOutputStream = new DataOutputStream(socket.getOutputStream());
@@ -60,7 +60,7 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                             Log.e("tag User Checker", message);
                             break;
                         }
-                        case "signIn": {
+                        case "signin": {
                             if (params[2].equals("success")) {
                                 SignInActivity.result = "SUCCESS";
                             } else {

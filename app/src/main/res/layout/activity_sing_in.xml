@@ -13,26 +13,28 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:layout_marginTop="250dp"
-        android:layout_marginLeft="100dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="110dp"
         android:hint="Username" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
+        android:layout_marginLeft="110dp"
         android:layout_marginTop="25dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword" />
 
-    <Button
+    <android.support.design.button.MaterialButton
         android:id="@+id/buttonSignIn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="165dp"
         android:text="Sign in" />
+
+
 
 </android.support.v7.widget.LinearLayoutCompat>

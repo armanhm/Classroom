@@ -1,12 +1,18 @@
 package com.example.testclassroom;
 
 import android.content.Intent;
+import android.graphics.Point;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Display;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,30 +22,45 @@ public class MainActivity extends AppCompatActivity {
     String type;
     Button buttonSignIn;
     Button buttonRegister;
+    ImageView imageViewSignIn , imageViewSignUp;
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
     static ArrayList<String> classList = new ArrayList<>();
+    static int width , height;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        width = size.x;
+        height = size.y;
+        Log.e("Width", "" + width);
+        Log.e("height", "" + height);
+        Toast.makeText(MainActivity.this , "width:" + width + "  height:" + height , Toast.LENGTH_LONG).show();
+
+
         ListOfClassActivity.arrayList = new ArrayList<>();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        buttonSignIn = findViewById(R.id.buttonSignIn);
-        buttonRegister = findViewById(R.id.buttonRegister);
+        imageViewSignIn = findViewById(R.id.imageView_signIn);
+        imageViewSignUp = findViewById(R.id.imageView_Register);
 
-        buttonSignIn.setOnClickListener(v -> {
+
+        imageViewSignIn.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this,SignInActivity.class);
             startActivity(intent);
         });
-        buttonRegister.setOnClickListener(v ->{
+
+        imageViewSignUp.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
             startActivity(intent);
         });
+
 
         ItemClass.classCodes = new ArrayList<>();
 

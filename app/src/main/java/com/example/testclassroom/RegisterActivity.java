@@ -46,11 +46,11 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, transferMessage.message, Toast.LENGTH_SHORT).show();
                 if (result.equals("repeated") && !onTime) {
                     RegisterActivity.result = "";
-                    editTextUsername.requestFocus();
+                    //editTextUsername.requestFocus();
                     editTextUsername.setError("Repeated Username");
                 }
             } else {
-                editTextUsername.requestFocus();
+                //editTextUsername.requestFocus();
                 editTextUsername.setError("Please Enter Username");
             }
         });

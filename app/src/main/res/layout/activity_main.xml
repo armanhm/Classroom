@@ -4,31 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/buttonSignIn"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="270dp"
-        android:background="@color/white"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginLeft="152dp"
-        android:text="Sign in"
-        android:textSize="18sp"/>
-
-    <Button
-        android:id="@+id/buttonRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:src="@drawable/classroomlogo"
         android:layout_marginLeft="150dp"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginTop="20dp"
-        android:textSize="18sp"
-        android:text="register" />
+        android:layout_marginTop="50dp"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/signin"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="130dp"
+        android:id="@+id/imageView_signIn"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="130dp"
+        android:id="@+id/imageView_Register"
+        android:src="@drawable/register"/>
+
+
+
 
 
 </LinearLayout>
