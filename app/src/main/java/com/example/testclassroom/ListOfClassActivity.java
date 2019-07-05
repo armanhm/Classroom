@@ -52,7 +52,7 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
             classList.add(itemClass);
         }
         //RegisterActivity.p.setItemClasses(classList);
-        itemArrayAdapter = new ItemArrayAdapter(R.layout.item,classList,this);
+        itemArrayAdapter = new ItemArrayAdapter(R.layout.item_class,classList,this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(itemArrayAdapter);

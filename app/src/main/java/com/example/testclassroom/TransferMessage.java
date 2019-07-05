@@ -111,9 +111,12 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                             }
                             break;
                         }
-                        case "people": {
-                            ListOfHomeworkActivity.listOfTeachers = params[1];
-                            ListOfHomeworkActivity.listOfStudents = params[2];
+                        case "studentList": {
+                            ListOfHomeworkActivity.listOfStudents = message;
+                            break;
+                        }
+                        case "teacherList": {
+                            ListOfHomeworkActivity.listOfTeachers = message;
                             break;
                         }
                         case "homeworkProfile": {

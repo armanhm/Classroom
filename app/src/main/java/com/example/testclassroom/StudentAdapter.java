@@ -10,27 +10,27 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder> {
+public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHolder> {
 
     private int listItemLayout;
-    private ArrayList<ItemPeople> itemList;
-    private PeopleAdapter.OnNoteListener onNoteListener;
+    private ArrayList<ItemStudent> itemList;
+    private StudentAdapter.OnNoteListener onNoteListener;
 
-    public PeopleAdapter(int listItemLayout, ArrayList<ItemPeople> itemList, PeopleAdapter.OnNoteListener onNoteListener) {
+    public StudentAdapter(int listItemLayout, ArrayList<ItemStudent> itemList, StudentAdapter.OnNoteListener onNoteListener) {
         this.listItemLayout = listItemLayout;
         this.itemList = itemList;
         this.onNoteListener = onNoteListener;
     }
 
     @Override
-    public PeopleAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public StudentAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(listItemLayout, viewGroup, false);
-        PeopleAdapter.ViewHolder myViewHolder = new PeopleAdapter.ViewHolder(view,onNoteListener);
+        StudentAdapter.ViewHolder myViewHolder = new StudentAdapter.ViewHolder(view,onNoteListener);
         return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PeopleAdapter.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull StudentAdapter.ViewHolder viewHolder, int i) {
         TextView textViewName = viewHolder.textViewName;
         //ImageView imageViewProfile = viewHolder.imageViewProfile ;
         textViewName.setText(itemList.get(i).getUsername());
@@ -54,8 +54,8 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
 
         public ViewHolder(@NonNull View itemView , OnNoteListener onNoteListener) {
             super(itemView);
-            textViewName = itemView.findViewById(R.id.textView_people_name);
-            imageViewProfile = itemView.findViewById(R.id.image_profile_people);
+            textViewName = itemView.findViewById(R.id.textView_student_name);
+            imageViewProfile = itemView.findViewById(R.id.image_profile_student);
             this.onNoteListener = onNoteListener;
 
         }

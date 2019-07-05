@@ -1,8 +1,6 @@
 package com.example.testclassroom;
 
-
-
-public class ItemPeople {
+public class ItemTeacher {
     private String username ;
     private String image ;
 
@@ -22,12 +20,8 @@ public class ItemPeople {
         this.image = image;
     }
 
-    public ItemPeople(String username, String image) {
-
-
+    public ItemTeacher(String username, String image) {
         this.username = username;
         this.image = image;
     }
-
-
 }

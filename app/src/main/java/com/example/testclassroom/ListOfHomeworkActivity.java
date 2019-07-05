@@ -1,7 +1,6 @@
 package com.example.testclassroom;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -105,8 +104,8 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
             = item -> {
                 //Fragment fragment;
                 switch (item.getItemId()) {
-                    case R.id.action_settings_bottom_navigation:
-                        Toast.makeText(ListOfHomeworkActivity.this, "Settings", Toast.LENGTH_SHORT).show();
+                    case R.id.action_students_bottom_navigation:
+                        Toast.makeText(ListOfHomeworkActivity.this, "Students", Toast.LENGTH_SHORT).show();
                         new TransferMessage().execute("classInfo:" + classCode);
                         Intent intent = new Intent(ListOfHomeworkActivity.this, ClassSettingActivity.class);
                         startActivity(intent);
@@ -114,8 +113,8 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
                     case R.id.action_classwork_bottom_navigation:
                         Toast.makeText(ListOfHomeworkActivity.this, "classwork", Toast.LENGTH_SHORT).show();
                         return true;
-                    case R.id.action_people_bottom_Navigation:
-                        Toast.makeText(ListOfHomeworkActivity.this, "People", Toast.LENGTH_SHORT).show();
+                    case R.id.action_teachers_bottom_Navigation:
+                        Toast.makeText(ListOfHomeworkActivity.this, "Teachers", Toast.LENGTH_SHORT).show();
                         return true;
                 }
                 return false;

@@ -1,0 +1,40 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+<LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teachers"
+        android:textColor="@color/green_light"
+        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:layout_weight="75"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="25"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/adduserbutton1"
+        android:id="@+id/imageView_add_student"/>
+</LinearLayout>
+
+<android.support.v7.widget.RecyclerView
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+android:id="@+id/recyclerView_teachers">
+
+</android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

@@ -45,7 +45,7 @@ public class ClassActivity extends AppCompatActivity {
             ItemHomework itemHomework = new ItemHomework(arrayList.get(i) , arrayList.get(i+1), arrayList.get(i+2));
             homeworkList.add(itemHomework);
         }
-        //ItemArrayAdapter itemArrayAdapter = new ItemArrayAdapter(R.layout.item,RegisterActivity.p.getItemClasses(),this);
+        //ItemArrayAdapter itemArrayAdapter = new ItemArrayAdapter(R.layout.item_class,RegisterActivity.p.getItemClasses(),this);
         //HomeworkAdapter homeworkAdapter = new HomeworkAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
