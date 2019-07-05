@@ -9,7 +9,8 @@
         app:showAsAction="always"
         android:title="+"
         android:id="@+id/action_plus"
-        android:icon="@drawable/plus_icon">
+        android:icon="@drawable/pluswhite"
+        >
         <menu>
             <item android:title="Create Class"
                 android:id="@+id/action_create"/>

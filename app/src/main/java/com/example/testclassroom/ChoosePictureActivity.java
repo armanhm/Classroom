@@ -18,16 +18,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Objects;
 
 public class ChoosePictureActivity extends AppCompatActivity {
-    int PICK_IMAGE = 100;
-    Uri imageUri;
-    static String stringUri;
+    int PICK_IMAGE = 1;
     ImageView imageViewChoosePicture;
     TextView textViewChoosePicture ;
     Button buttonSkip ;
-    String pathImage;
+    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,68 +46,52 @@ public class ChoosePictureActivity extends AppCompatActivity {
         });
 
         buttonSkip.setOnClickListener(v -> {
-            Intent intent = new Intent(ChoosePictureActivity.this,ListOfClassActivity.class);
-            startActivity(intent);
             if (textViewChoosePicture.getText().toString().equals("Skip")){
                 new TransferMessage().execute("imageProfile:"+ WelcomeActivity.username + ":noImage") ;
             }
             else {
-                //pathImage = getRealPathFromURI(imageUri);
-                //String stringURI = getBase64String();
-                new TransferMessage().execute("imageProfile:" + WelcomeActivity.username + ":" + "imageTest");
+                new TransferMessage().execute("imageProfile:" + WelcomeActivity.username + ":" + "testImage");
+                Log.e("CHOOSE" , imageToString(bitmap));
+                //new TransferMessage().execute(imageToString(bitmap));
             }
+            Intent intent = new Intent(ChoosePictureActivity.this,ListOfClassActivity.class);
+            startActivity(intent);
         });
 
 
     }
 
     private void pickFromGallery() {
-        Log.e("TagPick" , "picked");
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(intent, PICK_IMAGE);
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent,PICK_IMAGE);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
-            imageUri = Objects.requireNonNull(data).getData();
-            Log.e("imageURI" , "test");
-            imageViewChoosePicture.setImageURI(imageUri);
-            stringUri = imageUri.toString();
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE && data != null) {
+
+            Uri path = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            imageViewChoosePicture.setImageURI(path);
             textViewChoosePicture.setText("Image Added Successfully!");
             buttonSkip.setText("Next");
+
 
         }
     }
 
-    private String getBase64String() {
-
-        // give your image file url in mCurrentPhotoPath
-        Bitmap bitmap = BitmapFactory.decodeFile(pathImage);
-
-
+    private String imageToString(Bitmap bitmap){
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        // In case you want to compress your image, here it's at 40%
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream);
-        byte[] byteArray = byteArrayOutputStream.toByteArray();
-
-        return Base64.encodeToString(byteArray, Base64.DEFAULT);
-    }
-
-    public String getRealPathFromURI(Uri contentUri) {
-
-        // can post image
-        String [] proj={MediaStore.Images.Media.DATA};
-        Cursor cursor = managedQuery( contentUri,
-                proj, // Which columns to return
-                null,       // WHERE clause; which rows to return (all rows)
-                null,       // WHERE clause selection arguments (none)
-                null); // Order-by clause (ascending by name)
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-
-        return cursor.getString(column_index);
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        byte[] imgBytes = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(imgBytes,Base64.DEFAULT);
     }
 
 

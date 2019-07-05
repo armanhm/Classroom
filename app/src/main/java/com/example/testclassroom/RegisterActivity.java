@@ -21,8 +21,8 @@ import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    static Person p;
-    static String result = "";
+    public static Person p;
+    public static String result = "";
     boolean onTime = false;
 
     EditText editTextUsername, editTextPassword;

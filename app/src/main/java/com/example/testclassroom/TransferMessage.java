@@ -1,5 +1,6 @@
 package com.example.testclassroom;
 
+import android.app.Notification;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -9,10 +10,10 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class TransferMessage extends AsyncTask<String, Void, Void> {
-    Socket socket;
-    DataOutputStream dataOutputStream;
-    DataInputStream dataInputStream;
-    String message;
+    public Socket socket;
+    public DataOutputStream dataOutputStream;
+    public DataInputStream dataInputStream;
+    public String message;
     static String msg;
     //static ArrayList<Class> classes;
 
@@ -125,6 +126,12 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                         }
                         case "classInfo" : {
                             ClassSettingActivity.result = message ;
+                            break;
+                        }
+                        case "notification" : {
+                            if (params[1].equals(WelcomeActivity.username)){
+                                NotificationActivity.listOfNotification = message;
+                            }
                             break;
                         }
                         default:
