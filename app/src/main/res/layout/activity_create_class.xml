@@ -8,6 +8,9 @@
     android:layout_marginTop="50dp"
     tools:context=".CreateClassActivity">
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/editTextClassName"
         android:layout_width="match_parent"
@@ -16,6 +19,11 @@
         android:inputType="textPersonName"
         android:layout_margin="15dp"
         android:hint="Class Name(required)" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/editTextDescription"
         android:layout_width="match_parent"
@@ -24,7 +32,12 @@
         android:inputType="textPersonName"
         android:layout_margin="15dp"
         android:hint="Description" />
+    </android.support.design.widget.TextInputLayout>
 
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/editTextNumber"
         android:layout_width="match_parent"
@@ -33,6 +46,8 @@
         android:layout_margin="15dp"
         android:hint="Room(number only)"
         android:inputType="number" />
+    </android.support.design.widget.TextInputLayout>
+
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

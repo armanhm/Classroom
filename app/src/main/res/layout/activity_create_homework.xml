@@ -9,15 +9,23 @@
     android:layout_marginRight="20dp"
     tools:context=".CreateHomeworkActivity">
 
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/editTextHomeworkTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="35dp"
         android:inputType="textPersonName"
         android:hint="Title" />
+    </android.support.design.widget.TextInputLayout>
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/editTextHomeworkDescription"
         android:layout_width="match_parent"
@@ -26,7 +34,12 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Description" />
+    </android.support.design.widget.TextInputLayout>
 
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/editTextHomeworkPoint"
         android:layout_width="wrap_content"
@@ -35,6 +48,7 @@
         android:ems="10"
         android:hint="Points"
         android:inputType="number" />
+    </android.support.design.widget.TextInputLayout>
 
     <Spinner
         android:id="@+id/spinnerHomeworkTopic"

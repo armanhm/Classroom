@@ -24,7 +24,7 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
         try {
             //192.168.56.1 // Emulator
             // 192.168.43.80  The Real
-            socket = new Socket("172.20.99.59", 8850);
+            socket = new Socket("192.168.1.13", 8850);
             new Thread(() -> {
                 try {
                     dataOutputStream = new DataOutputStream(socket.getOutputStream());
@@ -69,8 +69,10 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                             break;
                         }
                         case "classList": {
-                            MainActivity.classList.clear();
-                            ListOfClassActivity.listString = message;
+                            if (params[1].equals(WelcomeActivity.username)) {
+                                MainActivity.classList.clear();
+                                ListOfClassActivity.listString = message;
+                            }
                         }
                         break;
                         case "createClass": {

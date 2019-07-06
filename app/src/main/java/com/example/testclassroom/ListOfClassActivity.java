@@ -46,7 +46,7 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
         recyclerView = findViewById(R.id.recyclerViewClassNames);
 
         classList = new ArrayList<>();
-        for (int i = 0; i < arrayList.size()-1; i += 3) {
+        for (int i = 1; i < arrayList.size(); i += 3) {
             ItemClass itemClass = new ItemClass(arrayList.get(i) , arrayList.get(i+1));
             ItemClass.classCodes.add(arrayList.get(i+2));
             classList.add(itemClass);
