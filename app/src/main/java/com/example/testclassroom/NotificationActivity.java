@@ -66,7 +66,7 @@ public class NotificationActivity extends AppCompatActivity  implements Notifica
     @Override
     public void onNoteClick(int position) {
 //        ItemHomework itemHomework = homeworkList.get(position);
-//        Intent intent = new Intent(ListOfHomeworkActivity.this, ProfileHomeworkActivity.class);
+//        Intent intent = new Intent(ListOfHomeworkActivity.this, ProfileHomeworkStudentActivity.class);
 //        intent.putExtra("homeworkName", itemHomework.getName());
 //        intent.putExtra("homeworkCode" , ItemHomework.homeworkCodes.get(position));
 //        startActivity(intent);

@@ -119,7 +119,7 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                             break;
                         }
                         case "homeworkProfile": {
-                            ProfileHomeworkActivity.homeworkProfileResult = message;
+                            ProfileHomeworkStudentActivity.homeworkProfileResult = message;
 
                         }
                         case "commentsList:" :{

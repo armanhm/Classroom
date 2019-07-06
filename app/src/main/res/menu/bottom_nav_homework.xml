@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_students_bottom_navigation"
+        android:enabled="true"
+        android:title="Student Works"
+        android:icon="@drawable/reading"
+        />
+
+    <item
+        android:id="@+id/action_classwork_bottom_navigation"
+        android:enabled="true"
+        android:title="Instructions"
+        android:icon="@drawable/classwork"
+        app:showAsAction="ifRoom" />
+</menu>

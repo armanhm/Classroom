@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="100"
+    android:orientation="vertical"
+    tools:context=".ListOfInstructionsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="45"
+        android:background="@color/our_favorite_blue"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="18sp"
+            android:id="@+id/textView_homework_date"
+            android:text="Due Friday"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/textView_homework_title"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:text="homework"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_homework_point"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:text="point"/>
+
+
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="40"
+        android:id="@+id/recyclerView_instructions"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_add_comment_instructions"
+            android:layout_weight="80"
+            android:hint="Add Class Comment"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView_send_comment"
+            android:layout_weight="20"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/rightarrow"/>
+
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

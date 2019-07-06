@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ProfileHomeworkActivity extends AppCompatActivity {
+public class ProfileHomeworkStudentActivity extends AppCompatActivity {
 
     static String homeworkProfileResult = "";
 
@@ -46,12 +46,12 @@ public class ProfileHomeworkActivity extends AppCompatActivity {
         imageViewBack = findViewById(R.id.imageView_back);
 
         imageViewBack.setOnClickListener(v -> {
-            Intent intent = new Intent(ProfileHomeworkActivity.this, ListOfHomeworkActivity.class);
+            Intent intent = new Intent(ProfileHomeworkStudentActivity.this, ListOfHomeworkActivity.class);
             startActivity(intent);
         });
 
         textViewPublicComment.setOnClickListener(v -> {
-            Intent intent = new Intent(ProfileHomeworkActivity.this,ListOfCommentsActivity.class);
+            Intent intent = new Intent(ProfileHomeworkStudentActivity.this,ListOfCommentsActivity.class);
             intent.putExtra("homeworkCode",homeworkCode);
             startActivity(intent);
         });

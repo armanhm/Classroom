@@ -27,10 +27,11 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
     static String listOfStudents = "";
     static String classCode = "";
     static String userType = "";
+    static String homeworkCode = "";
     ArrayList<ItemHomework> homeworkList;
     FloatingActionButton fab_homework, fab_topic, fab_exam;
     FloatingActionsMenu fam_main;
-    BottomNavigationView bottomNavigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,7 +165,8 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
     @Override
     public void onNoteClick(int position) {
         ItemHomework itemHomework = homeworkList.get(position);
-        Intent intent = new Intent(ListOfHomeworkActivity.this, ProfileHomeworkActivity.class);
+        homeworkCode = ItemHomework.homeworkCodes.get(position);
+        Intent intent = new Intent(ListOfHomeworkActivity.this, ProfileHomeworkStudentActivity.class);
         intent.putExtra("homeworkName", itemHomework.getName());
         intent.putExtra("homeworkCode" , ItemHomework.homeworkCodes.get(position));
         startActivity(intent);

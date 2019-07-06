@@ -17,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListOfTeachersActivity"></activity>
+        <activity android:name=".ListOfInstructionsActivity"></activity>
+        <activity android:name=".ProfileHomeworkTeacherActivity" />
+        <activity android:name=".ListOfTeachersActivity" />
         <activity android:name=".ListOfStudentsActivity" />
         <activity
             android:name=".ClassSettingActivity"
@@ -41,7 +43,7 @@
             android:name=".AddTopicActivity"
             android:label="Customize Topic" />
         <activity
-            android:name=".ProfileHomeworkActivity"
+            android:name=".ProfileHomeworkStudentActivity"
             android:label="Homework Profile" />
         <activity
             android:name=".ListOfHomeworkActivity"
