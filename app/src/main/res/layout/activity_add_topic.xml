@@ -4,8 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".AddTopicActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/our_favorite_blue"
+        android:orientation="horizontal">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="80">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:id="@+id/editText_add_topic"
+            android:layout_weight="80"
+            android:hint="Now you can add new Topics"
+            android:textColorHint="@color/white"
+            />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_send_topic"
+            android:layout_marginTop="15dp"
+            android:textSize="18sp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/white"
+            android:layout_weight="20"
+            android:text="SAVE"/>
+
+
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="Current Topics:"
+        android:textColor="@color/green_dark"/>
+
+    <Spinner
+        android:id="@+id/spinner_add_topic"
+        android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

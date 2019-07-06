@@ -86,6 +86,7 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
         });
 
         fab_topic.setOnClickListener(v -> {
+            new TransferMessage().execute("topics:" + classCode);
             Intent intent = new Intent(ListOfHomeworkActivity.this, AddTopicActivity.class);
             startActivity(intent);
         });
