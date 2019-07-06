@@ -54,6 +54,5 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
             textViewComment = itemView.findViewById(R.id.textViewComment);
             textViewUsername = itemView.findViewById(R.id.textView_username_comment);
         }
-
     }
 }
