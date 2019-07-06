@@ -3,10 +3,12 @@ package com.example.testclassroom;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ProfileHomeworkStudentActivity extends AppCompatActivity {
 
@@ -17,6 +19,7 @@ public class ProfileHomeworkStudentActivity extends AppCompatActivity {
     TextView textViewHomeworkName, textViewAssignment , textViewPublicComment;
     ImageView imageViewBack;
     String name = "", comments = "", assignments = "";
+    ImageView imageViewSend ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class ProfileHomeworkStudentActivity extends AppCompatActivity {
         textViewHomeworkName = findViewById(R.id.textView_homework_name);
         textViewAssignment = findViewById(R.id.textView_show_assignment);
         imageViewBack = findViewById(R.id.imageView_back);
+        imageViewSend = findViewById(R.id.action_send_comment) ;
 
         imageViewBack.setOnClickListener(v -> {
             Intent intent = new Intent(ProfileHomeworkStudentActivity.this, ListOfHomeworkActivity.class);
@@ -56,9 +60,22 @@ public class ProfileHomeworkStudentActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+
         textViewHomeworkName.setText(name);
         textViewAssignment.setText(assignments);
         showComments(comments);
+
+        imageViewSend.setOnClickListener(v -> {
+            if(!editTextPrivateComment.getText().toString().equals("")){
+                String s = "addPrivateComment:" + homeworkCode + ":" + WelcomeActivity.username + ":" + editTextPrivateComment.getText().toString();
+                new TransferMessage().execute(s) ;
+            }
+            else  {
+                Toast.makeText(ProfileHomeworkStudentActivity.this,"Enter Something :| " ,Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     private void showComments(String comments) {
