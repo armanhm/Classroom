@@ -49,7 +49,7 @@ public class ClassActivity extends AppCompatActivity {
         //HomeworkAdapter homeworkAdapter = new HomeworkAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        //recyclerView.setAdapter(homeworkAdapter);
+        //recyclerViewComments.setAdapter(homeworkAdapter);
     }
 
     @Override
