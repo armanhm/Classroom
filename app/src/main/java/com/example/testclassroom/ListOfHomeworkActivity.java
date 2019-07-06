@@ -61,7 +61,6 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
 
         homeworkList = new ArrayList<>();
 
-        Log.e("classCode", classCode);
 
 
         for (int i = 2; i < arrayListHomework.size() - 2; i += 4) {
@@ -151,6 +150,11 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
 
         } else if (id == R.id.action_about_us) {
             Intent intent = new Intent(ListOfHomeworkActivity.this, AboutUsActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.action_setting){
+            ClassSettingActivity.updateClassInfo(classCode);
+            Intent intent = new Intent(ListOfHomeworkActivity.this , ClassSettingActivity.class);
             startActivity(intent);
         }
 

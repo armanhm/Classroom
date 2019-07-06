@@ -34,7 +34,6 @@
             android:layout_weight="50"
             />
 
-        <android.support.design.widget.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         <EditText
@@ -44,7 +43,6 @@
             android:hint="Edit Title"
             android:textColor="@color/colorPrimary"
             android:layout_weight="50"/>
-        </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
 
@@ -66,7 +64,6 @@
             android:id="@+id/textView_class_description"
             android:layout_weight="50"
             />
-        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <EditText
@@ -76,7 +73,6 @@
             android:hint="Edit Description"
             android:textColor="@color/colorPrimary"
             android:layout_weight="50"/>
-        </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
 
@@ -97,7 +93,6 @@
             android:textColor="@color/colorPrimary"
             android:layout_weight="50"
             />
-        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <EditText
@@ -107,7 +102,6 @@
             android:hint="Edit Room"
             android:textColor="@color/colorPrimary"
             android:layout_weight="50"/>
-        </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
 

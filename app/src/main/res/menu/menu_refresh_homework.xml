@@ -19,5 +19,9 @@
         android:title="About Us"
         android:id="@+id/action_about_us"
         />
+    <item
+        android:id="@+id/action_setting"
+        android:title="Settings"
+        />
 
 </menu>
