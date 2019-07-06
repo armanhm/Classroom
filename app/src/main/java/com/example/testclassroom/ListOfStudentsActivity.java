@@ -25,6 +25,8 @@ public class ListOfStudentsActivity extends AppCompatActivity implements Student
     protected void onCreate(Bundle savedInstanceState) {
 
         studentList = new ArrayList<>();
+        arrayListStudents = new ArrayList<>();
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_students);
@@ -48,13 +50,10 @@ public class ListOfStudentsActivity extends AppCompatActivity implements Student
         }
 
 
-
-
         studentAdapter  = new StudentAdapter(R.layout.item_teacher, studentList , this);
         recyclerViewStudents.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewStudents.setItemAnimator(new DefaultItemAnimator());
         recyclerViewStudents.setAdapter(studentAdapter);
-
 
 
     }

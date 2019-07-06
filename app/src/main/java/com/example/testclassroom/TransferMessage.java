@@ -1,6 +1,5 @@
 package com.example.testclassroom;
 
-import android.app.Notification;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -25,7 +24,7 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
         try {
             //192.168.56.1 // Emulator
             // 192.168.43.80  The Real
-            socket = new Socket("192.168.43.80", 8850);
+            socket = new Socket("172.20.99.59", 8850);
             new Thread(() -> {
                 try {
                     dataOutputStream = new DataOutputStream(socket.getOutputStream());

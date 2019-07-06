@@ -106,15 +106,21 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
                 switch (item.getItemId()) {
                     case R.id.action_students_bottom_navigation:
                         Toast.makeText(ListOfHomeworkActivity.this, "Students", Toast.LENGTH_SHORT).show();
-                        new TransferMessage().execute("classInfo:" + classCode);
-                        Intent intent = new Intent(ListOfHomeworkActivity.this, ClassSettingActivity.class);
-                        startActivity(intent);
+                        new TransferMessage().execute("studentList:" + classCode);
+                        Intent intent1 = new Intent(ListOfHomeworkActivity.this, ListOfStudentsActivity.class);
+                        startActivity(intent1);
                         return true;
                     case R.id.action_classwork_bottom_navigation:
+                        Intent intent2 = new Intent(ListOfHomeworkActivity.this , ListOfHomeworkActivity.class);
+                        new TransferMessage().execute("homeworkList:" + classCode);
+                        startActivity(intent2);
                         Toast.makeText(ListOfHomeworkActivity.this, "classwork", Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.action_teachers_bottom_Navigation:
-                        Toast.makeText(ListOfHomeworkActivity.this, "Teachers", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ListOfHomeworkActivity.this, "teacherList", Toast.LENGTH_SHORT).show();
+                        new TransferMessage().execute("teacherList:" + classCode);
+                        Intent intent3 = new Intent(ListOfHomeworkActivity.this , ListOfTeachersActivity.class);
+                        startActivity(intent3);
                         return true;
                 }
                 return false;

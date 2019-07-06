@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class SignInActivity extends AppCompatActivity {
@@ -30,14 +31,16 @@ public class SignInActivity extends AppCompatActivity {
         //Objects.requireNonNull(getSupportActionBar()).setTitle("Sign in");
 
         buttonSignIn.setOnClickListener(v ->{
-            String s = "signin:" + username.getText().toString()
+            String s = "signIn:" + username.getText().toString()
                     + ":" + password.getText().toString();
             TransferMessage transferMessage = new TransferMessage();
             transferMessage.execute(s);
             if (result.equals("SUCCESS")){
                 SignInActivity.result = "" ;
                 WelcomeActivity.username = username.getText().toString();
+                MainActivity.classList.clear(); // new Change
                 CreateClassActivity.refreshList();
+                ListOfClassActivity.arrayList = new ArrayList<>();
                 Intent intent = new Intent(SignInActivity.this , ListOfClassActivity.class);
                 Toast.makeText(SignInActivity.this,username.getText().toString() + "welcome Back!" , Toast.LENGTH_LONG).show();
                 startActivity(intent);
