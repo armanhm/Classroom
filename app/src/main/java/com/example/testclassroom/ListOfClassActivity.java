@@ -51,7 +51,7 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
             ItemClass.classCodes.add(arrayList.get(i+2));
             classList.add(itemClass);
         }
-        //RegisterActivity.p.setItemClasses(classList);
+
         itemArrayAdapter = new ItemArrayAdapter(R.layout.item_class,classList,this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -105,7 +105,6 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
         Intent intent = new Intent(ListOfClassActivity.this,ListOfHomeworkActivity.class);
 
          new TransferMessage().execute("homeworkList:" + ItemClass.classCodes.get(position) + ":" + WelcomeActivity.username);
-
 
         intent.putExtra("classCode" , ItemClass.classCodes.get(position));
 

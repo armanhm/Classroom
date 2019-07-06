@@ -35,11 +35,7 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         ItemHomework.homeworkCodes = new ArrayList<>();
-
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_homework);
@@ -65,12 +61,12 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
 
         homeworkList = new ArrayList<>();
 
-        Log.e("classCode" , classCode);
+        Log.e("classCode", classCode);
 
 
         for (int i = 2; i < arrayListHomework.size() - 2; i += 4) {
             ItemHomework itemHomework = new ItemHomework(arrayListHomework.get(i), arrayListHomework.get(i + 1), arrayListHomework.get(i + 2));
-            ItemHomework.homeworkCodes.add(arrayListHomework.get(i+3));
+            ItemHomework.homeworkCodes.add(arrayListHomework.get(i + 3));
             homeworkList.add(itemHomework);
         }
 
@@ -103,29 +99,29 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
-                //Fragment fragment;
-                switch (item.getItemId()) {
-                    case R.id.action_students_bottom_navigation:
-                        Toast.makeText(ListOfHomeworkActivity.this, "Students", Toast.LENGTH_SHORT).show();
-                        new TransferMessage().execute("studentList:" + classCode);
-                        Intent intent1 = new Intent(ListOfHomeworkActivity.this, ListOfStudentsActivity.class);
-                        startActivity(intent1);
-                        return true;
-                    case R.id.action_classwork_bottom_navigation:
-                        Intent intent2 = new Intent(ListOfHomeworkActivity.this , ListOfHomeworkActivity.class);
-                        new TransferMessage().execute("homeworkList:" + classCode);
-                        startActivity(intent2);
-                        Toast.makeText(ListOfHomeworkActivity.this, "classwork", Toast.LENGTH_SHORT).show();
-                        return true;
-                    case R.id.action_teachers_bottom_Navigation:
-                        Toast.makeText(ListOfHomeworkActivity.this, "teacherList", Toast.LENGTH_SHORT).show();
-                        new TransferMessage().execute("teacherList:" + classCode);
-                        Intent intent3 = new Intent(ListOfHomeworkActivity.this , ListOfTeachersActivity.class);
-                        startActivity(intent3);
-                        return true;
-                }
-                return false;
-            };
+        //Fragment fragment;
+        switch (item.getItemId()) {
+            case R.id.action_students_bottom_navigation:
+                Toast.makeText(ListOfHomeworkActivity.this, "Students", Toast.LENGTH_SHORT).show();
+                new TransferMessage().execute("studentList:" + classCode);
+                Intent intent1 = new Intent(ListOfHomeworkActivity.this, ListOfStudentsActivity.class);
+                startActivity(intent1);
+                return true;
+            case R.id.action_classwork_bottom_navigation:
+                Intent intent2 = new Intent(ListOfHomeworkActivity.this, ListOfHomeworkActivity.class);
+                new TransferMessage().execute("homeworkList:" + classCode);
+                startActivity(intent2);
+                Toast.makeText(ListOfHomeworkActivity.this, "classwork", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_teachers_bottom_Navigation:
+                Toast.makeText(ListOfHomeworkActivity.this, "teacherList", Toast.LENGTH_SHORT).show();
+                new TransferMessage().execute("teacherList:" + classCode);
+                Intent intent3 = new Intent(ListOfHomeworkActivity.this, ListOfTeachersActivity.class);
+                startActivity(intent3);
+                return true;
+        }
+        return false;
+    };
 
 
     @Override
@@ -139,21 +135,21 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_refresh_homework) {
-            new TransferMessage().execute("homeworkList:" + classCode + ":" +  WelcomeActivity.username);
+            new TransferMessage().execute("homeworkList:" + classCode + ":" + WelcomeActivity.username);
             //   CreateHomeworkActivity.refreshHomework(ListOfHomeworkActivity.classCode);
             Intent intent = new Intent(ListOfHomeworkActivity.this, ListOfHomeworkActivity.class);
             startActivity(intent);
         } else if (id == R.id.action_classes) {
             CreateClassActivity.refreshList();
-            Intent intent = new Intent(ListOfHomeworkActivity.this,ListOfClassActivity.class);
+            Intent intent = new Intent(ListOfHomeworkActivity.this, ListOfClassActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.action_notifications) {
-            Intent intent = new Intent(ListOfHomeworkActivity.this,NotificationActivity.class);
+            Intent intent = new Intent(ListOfHomeworkActivity.this, NotificationActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.action_about_us) {
-            Intent intent = new Intent(ListOfHomeworkActivity.this,AboutUsActivity.class);
+            Intent intent = new Intent(ListOfHomeworkActivity.this, AboutUsActivity.class);
             startActivity(intent);
         }
 
@@ -164,13 +160,19 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
 
     @Override
     public void onNoteClick(int position) {
-        ItemHomework itemHomework = homeworkList.get(position);
-        homeworkCode = ItemHomework.homeworkCodes.get(position);
-        Intent intent = new Intent(ListOfHomeworkActivity.this, ProfileHomeworkStudentActivity.class);
-        intent.putExtra("homeworkName", itemHomework.getName());
-        intent.putExtra("homeworkCode" , ItemHomework.homeworkCodes.get(position));
-        startActivity(intent);
-        //new TransferMessage().execute("homeworkProfile:" + itemHomework.getName()) ;
+        if (userType.equals("teacher")) {
+            Log.e("userType", ListOfHomeworkActivity.userType);
+            Intent intent = new Intent(ListOfHomeworkActivity.this, ProfileHomeworkTeacherActivity.class);
+            startActivity(intent);
+        } else {
+            ItemHomework itemHomework = homeworkList.get(position);
+            homeworkCode = ItemHomework.homeworkCodes.get(position);
+            Intent intent = new Intent(ListOfHomeworkActivity.this, ProfileHomeworkStudentActivity.class);
+            intent.putExtra("homeworkName", itemHomework.getName());
+            intent.putExtra("homeworkCode", ItemHomework.homeworkCodes.get(position));
+            startActivity(intent);
+            //new TransferMessage().execute("homeworkProfile:" + itemHomework.getName()) ;
+        }
 
     }
 }

@@ -1,12 +1,14 @@
 package com.example.testclassroom;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,21 +29,41 @@ public class ProfileHomeworkTeacherActivity extends AppCompatActivity  implement
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        bottomNavigationView = findViewById(R.id.bottom_navigation_homework_teacher);
-        bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        arrayListStudentWork = new ArrayList<>() ;
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_homework_teacher);
+
+        bottomNavigationView = findViewById(R.id.bn_teacher);
+        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
+            switch (menuItem.getItemId()) {
+                case R.id.action_students_bottom_navigation:
+                    Toast.makeText(ProfileHomeworkTeacherActivity.this, "Studentworks", Toast.LENGTH_SHORT).show();
+                    new TransferMessage().execute("studentWork:" + ListOfHomeworkActivity.homeworkCode); //homework Code
+                    Intent intent1 = new Intent(ProfileHomeworkTeacherActivity.this, ProfileHomeworkTeacherActivity.class);
+                    startActivity(intent1);
+                    return true;
+                case R.id.action_classwork_bottom_navigation:
+                    Intent intent2 = new Intent(ProfileHomeworkTeacherActivity.this , ListOfInstructionsActivity.class);
+                    new TransferMessage().execute("instructions:" + ListOfHomeworkActivity.homeworkCode);
+                    startActivity(intent2);
+                    Toast.makeText(ProfileHomeworkTeacherActivity.this, "Instructions", Toast.LENGTH_SHORT).show();
+                    return true;
+            }
+            return false;
+        });
+        arrayListStudentWork = new ArrayList<>() ;
+
+
+
+
         recyclerView = findViewById(R.id.recyclerView_homework_teacher) ;
 
 
 
         //listString is result of server
         String[] s = listString.split(":");
-        arrayListStudentWork.addAll(Arrays.asList(s).subList(2, s.length));
+        arrayListStudentWork.addAll(Arrays.asList(s).subList(1, s.length));
 
-        recyclerView = findViewById(R.id.recyclerViewClassNames);
+        //recyclerView = findViewById(R.id.recyclerViewClassNames);
 
         studentWorks = new ArrayList<>() ;
         for (int i = 0; i < studentWorks.size()-1; i += 3) {
@@ -61,25 +83,6 @@ public class ProfileHomeworkTeacherActivity extends AppCompatActivity  implement
     }
 
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = item -> {
-        //Fragment fragment;
-        switch (item.getItemId()) {
-            case R.id.action_students_bottom_navigation:
-                Toast.makeText(ProfileHomeworkTeacherActivity.this, "Studentworks", Toast.LENGTH_SHORT).show();
-                new TransferMessage().execute("studentWork:" + ListOfHomeworkActivity.homeworkCode); //homework Code
-                Intent intent1 = new Intent(ProfileHomeworkTeacherActivity.this, ProfileHomeworkTeacherActivity.class);
-                startActivity(intent1);
-                return true;
-            case R.id.action_classwork_bottom_navigation:
-                Intent intent2 = new Intent(ProfileHomeworkTeacherActivity.this , ListOfInstructionsActivity.class);
-                new TransferMessage().execute("instructions:" + ListOfHomeworkActivity.homeworkCode);
-                startActivity(intent2);
-                Toast.makeText(ProfileHomeworkTeacherActivity.this, "Instructions", Toast.LENGTH_SHORT).show();
-                return true;
-        }
-        return false;
-    };
 
 
 
