@@ -1,11 +1,14 @@
 package com.example.testclassroom;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
@@ -19,16 +22,19 @@ public class ListOfTeachersActivity extends AppCompatActivity implements Teacher
     static String resultTeacher = "";
     static ArrayList<String> arrayListTeachers;
     static TeacherAdapter teacherAdapter;
+    ImageView addTeacher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        teacherList = new ArrayList<>();
-        arrayListTeachers = new ArrayList<>();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_teachers);
         resultTeacher = ListOfHomeworkActivity.listOfTeachers;
+
+        teacherList = new ArrayList<>();
+        arrayListTeachers = new ArrayList<>();
+
+        addTeacher = findViewById(R.id.imageView_add_teacher);
 
         Log.e("resultTeacher" , resultTeacher);
 
@@ -49,6 +55,9 @@ public class ListOfTeachersActivity extends AppCompatActivity implements Teacher
         recyclerViewTeacher.setItemAnimator(new DefaultItemAnimator());
         recyclerViewTeacher.setAdapter(teacherAdapter);
 
+        addTeacher.setOnClickListener(v -> {
+            Intent intent = new Intent(ListOfTeachersActivity.this , AddTeacherActivity.class);
+        });
 
     }
 

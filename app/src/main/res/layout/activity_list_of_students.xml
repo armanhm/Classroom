@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="25"
             android:src="@drawable/adduserbutton1"
-            android:id="@+id/imageView_add_teacher"/>
+            android:id="@+id/imageView_add_student"/>
 
     </LinearLayout>
 
