@@ -143,6 +143,14 @@ public class TransferMessage extends AsyncTask<String, Void, Void> {
                             AddTopicActivity.length = params.length-2;
                             break;
                         }
+                        case "addStudent" : {
+                            AddStudentActivity.result = params[1];
+                            break;
+                        }case "addTeacher" : {
+                            AddTeacherActivity.result = params[1];
+                            break;
+                        }
+
                         default:
                             break;
                     }
