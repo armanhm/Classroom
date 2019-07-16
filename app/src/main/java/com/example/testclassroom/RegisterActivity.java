@@ -63,6 +63,9 @@ public class RegisterActivity extends AppCompatActivity {
             //  editTextUsername.requestFocus();
             editTextUsername.setError("Please Enter Username");
         }
+        if (editTextPassword.getText().toString().length() < 5){
+            editTextPassword.setError("Password should be at least 5 characters");
+        }
         if (!editTextUsername.getText().toString().equals("") && !editTextPassword.getText().toString().equals("")) {
             new TransferMessage().execute("signUp:" + editTextUsername.getText().toString() + ":" + editTextPassword.getText().toString());
             WelcomeActivity.username = editTextUsername.getText().toString();

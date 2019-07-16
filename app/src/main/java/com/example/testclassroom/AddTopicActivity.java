@@ -55,7 +55,6 @@ public class AddTopicActivity extends AppCompatActivity {
         for (int i = 0; i < arraySpinner.length; i++) {
             arraySpinner[i] = arrayList[i+2];
         }
-
     }
 }
 

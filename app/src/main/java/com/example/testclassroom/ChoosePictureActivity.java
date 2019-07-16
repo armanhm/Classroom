@@ -27,13 +27,14 @@ public class ChoosePictureActivity extends AppCompatActivity {
     TextView textViewChoosePicture ;
     Button buttonSkip ;
     Bitmap bitmap;
+    Uri path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_picture);
 
-        //Drawable img = getResources().getDrawable(R.drawable.user);
+        Drawable img = getResources().getDrawable(R.drawable.user);
 
 
 
@@ -51,8 +52,7 @@ public class ChoosePictureActivity extends AppCompatActivity {
             }
             else {
                 new TransferMessage().execute("imageProfile:" + WelcomeActivity.username + ":" + "testImage");
-                Log.e("CHOOSE" , imageToString(bitmap));
-                //new TransferMessage().execute(imageToString(bitmap));
+                new TransferMessage().execute(imageToString(bitmap));
             }
             Intent intent = new Intent(ChoosePictureActivity.this,ListOfClassActivity.class);
             startActivity(intent);
@@ -72,8 +72,6 @@ public class ChoosePictureActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE && data != null) {
-
-            Uri path = data.getData();
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),path);
             } catch (IOException e) {
@@ -82,14 +80,12 @@ public class ChoosePictureActivity extends AppCompatActivity {
             imageViewChoosePicture.setImageURI(path);
             textViewChoosePicture.setText("Image Added Successfully!");
             buttonSkip.setText("Next");
-
-
         }
     }
 
     private String imageToString(Bitmap bitmap){
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        bitmap.compress(Bitmap.CompressFormat.JPEG,20,byteArrayOutputStream);
         byte[] imgBytes = byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(imgBytes,Base64.DEFAULT);
     }

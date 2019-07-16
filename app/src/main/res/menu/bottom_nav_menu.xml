@@ -20,4 +20,12 @@
         android:title="Teachers"
         android:icon="@drawable/teacher"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/parsa"
+        android:enabled="true"
+        android:title="parsa"
+        android:icon="@drawable/teacher"
+        app:showAsAction="ifRoom"
+        />
 </menu>

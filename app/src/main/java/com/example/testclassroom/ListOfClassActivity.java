@@ -112,6 +112,7 @@ public class ListOfClassActivity extends AppCompatActivity implements ItemArrayA
         Log.e("ListOfClassCode" , ListOfHomeworkActivity.classCode);
 
         CreateHomeworkActivity.classCode = classCode;
+        ClassSettingActivity.classCode = classCode;
         c = new Class(RegisterActivity.p,itemClass.getName(),"description",itemClass.getNumberOfStudent());
         Toast.makeText(ListOfClassActivity.this,"class title: " + itemClass.getName(),Toast.LENGTH_LONG).show();
         startActivity(intent);

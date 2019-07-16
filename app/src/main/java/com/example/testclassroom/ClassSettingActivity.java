@@ -14,9 +14,9 @@ public class ClassSettingActivity extends AppCompatActivity {
     TextView textViewTitle ,textViewDescription , textViewRoomNumber , textViewClassCode;
     EditText editTextTitle , editTextDescription , editTextRoomNumber;
     static String result = "";
-    String request = "classSetting:" ;
-    String title, description, roomNUmber , classCode ;
-    String newTitle, newDescription , newRoomNumber;
+    static String request = "classSetting:" ;
+    static String title, description, roomNUmber , classCode ;
+    static String newTitle, newDescription , newRoomNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +25,7 @@ public class ClassSettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_setting);
 
-        String [] classInformation = result.split(":");
-        title = classInformation[1] ;
-        description = classInformation[2];
-        roomNUmber = classInformation[3];
-        classCode = classInformation[4];
+        test();
 
         textViewTitle = findViewById(R.id.textView_class_title);
         textViewDescription = findViewById(R.id.textView_class_description);
@@ -49,7 +45,14 @@ public class ClassSettingActivity extends AppCompatActivity {
     }
 
     public static void updateClassInfo(String classCode) {
-        new TransferMessage().execute("classInfo:" + classCode);
+        new TransferMessage().execute("classInfo:" + classCode + ":");
+    }
+
+    public static void test(){
+        String [] classInformation = result.split(":");
+        title = classInformation[1] ;
+        description = classInformation[2];
+        roomNUmber = classInformation[3];
     }
 
 
@@ -67,9 +70,10 @@ public class ClassSettingActivity extends AppCompatActivity {
 
         int id = item.getItemId();
         if(id == R.id.action_save_class_setting){
-            request = request.concat(classCode + ":" + newTitle + ":" + newDescription + ":" + newRoomNumber);
+            request = request.concat( classCode + ":" + newTitle + ":" + newDescription + ":" + newRoomNumber);
             new TransferMessage().execute(request);
             Toast.makeText(this,"The changes successfully saved!" , Toast.LENGTH_SHORT).show();
+            test();
             Intent intent = new Intent(ClassSettingActivity.this,ListOfHomeworkActivity.class);
             startActivity(intent);
         }

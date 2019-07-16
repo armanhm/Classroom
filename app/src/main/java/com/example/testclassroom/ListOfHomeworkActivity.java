@@ -119,6 +119,10 @@ public class ListOfHomeworkActivity extends AppCompatActivity implements Homewor
                 Intent intent3 = new Intent(ListOfHomeworkActivity.this, ListOfTeachersActivity.class);
                 startActivity(intent3);
                 return true;
+            case R.id.parsa :
+                Toast.makeText(ListOfHomeworkActivity.this,"SALAM PARSA" , Toast.LENGTH_SHORT).show();
+                new TransferMessage().execute("salam");
+
         }
         return false;
     };
